@@ -1,0 +1,97 @@
+Npm is a standard repository for all the packages. It is biggest package manager. All the packages are hosted in npm. All libraries, all utilities come from npm
+Npm manages that for you in your project.
+
+
+Package.json is a configuration for our npm. It creates in json format all data.
+
+Sometimes this package are also called dependencies. Our project is dependant on lot of packages. Those packages are called dependencies
+Npm manages those packages. Npm will take care of what version is of that package. Npm will take care of version in package.json
+
+Bundler - when you have normal html, css, js files, our whole code needs to be bundled together, our whole code needs to be minified, our whole code needs to be cached, our whole code needs to be compressed, our whole code needs to be cleaned before it is sent to production. A bundler helps you do that all thing.
+
+Webpack, parsel, veet etc  are bundlers. What is job of bundler?
+
+Bundler basically bundles your app. It packages your app properly so that it can be shift to production. 
+
+When we write create-react-app. The create-react-app behind the scenes uses webpack bundler and babel to build things up.
+
+Npm install -D parcel
+
+There are 2 types of dependency we can install. One is dev
+
+What is package-json?
+Package-Json is configuration for npm. It keeps track of what version of package is 
+Installed. If there is carot install any version. If there is  minor upgrade install that also. If there is 2.8.4 version install that also. Package.json maintains version of our dependency. If i do 2.8.3 without tilda or carot then there is no upgrade.
+
+Package-lock json keeps track of exact version that is being installed. Suppose if today there is 2.8.3 version My package.json will stay like this but package-lock.json kind of locks the version and keeps the record of this. It keeps record of every exact version of that package that is installed. Package-lock json keeps track of exact version like 2.8.3 but package.json can have
+carot or tilde. 
+
+Integrity is a SH512 hash. Why is hash present there?
+Have you heard it is working on my local but breaks on production.
+To avoid that package-lock json keeps a hash to verify whatever there is on my mac machine is same version being
+
+Deployed to production. Package-lock-json keeps track of all exact versions of all dependancies
+
+What is node-modules?
+
+Node-modules contain all the code that we fetch from npm
+
+When we did npm install parcel it went to production, it took one minute to install parcel. It was fetching all code of parcel and putting it inside node modules
+
+into production
+
+Node-modules is kind of database. It contains actual data of that dependencies of thos packages that our project needs 
+
+Node modules fetches all the code of all the dependencies into our system and we can 
+Now use that code
+
+Node modules is kind of databasxe where all packages exist
+
+Our project has a dependency parcel. Now parcel as a project has its own dependencies and those Dependencies can have its own dependancies
+this known as transitive dependency
+Parcel cannot do all these things on its own. Parcel needs help of all other packages.  That is why when we install parcel parcel says to npm please install other packages like bebel 
+
+Parcel can itself be dependant on lot of other packages.
+
+Parcel uses babel. Parcel uses browserlist too
+
+How is parcel managing all thing?
+
+
+How will npm know that parcel has its own dependency. What are dependency of parcel. In whole package how many package json we have , how many package-lock-json it have?
+
+Every dependency, every project you see in node modules have its own package.json and it will have its own dependencies like dev dependency and normal dependancy
+
+Just like we installed parcel as a dependency, parcel is also dependant on other projects, other repositories, other packages and it is maintaining its own configuration, maintaining its own package,json
+This is known as transitive dependency. 
+Our project has package.json, parcel has package.json, and all these libraries will have its own package.json. Package.json will have its own dependencies.  
+
+
+
+That is why our node modules is huge. It is collection of dependencies. It is kind of database for all our packages, all our files, all our code, all our dependencies.
+
+Why dont we put node_modules in git?
+
+Because if i have package-json and package-lock-json in git i can regenerat(or recreate) all my node-modules even if i delete my node-modules
+
+If i do npm install i can recreate all my node_modules
+
+
+Package.lock.json has exact version of all transitive and all dependencies that my project will ever need.
+
+Node modules contain all code of it, git ignore contains all file which i dont want to push inside github.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
