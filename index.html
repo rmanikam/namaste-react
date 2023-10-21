@@ -21,35 +21,97 @@
         root.appendChild(heading);
 
     </script> -->
+
+    <!-- <script>
+
+      const heading = React.createElement("h1", {id: "heading", xyz: "abc"}, "Hello World from React")
+   
+      console.log(heading);
+      
+      const root = ReactDOM.createRoot(document.getElementById("root"));
+      
+      root.render(heading);
+   </script> -->
+
+   <!--  Note above script tag will not work as it is using React and React is used downwards and not before the above script tag  -->
+
+
   <!-- The first file is the core file of React -->
-     <script 
+      
+
+
+     <!-- <script 
       crossorigin 
        src="https://unpkg.com/react@18/umd/react.development.js">
-    </script>
+    </script> -->
 
      <!-- The second file is the React library for DOM operations
        this is react dom which we need to modify dom (document object model) -->
     
     
-     <script 
+     <!-- <script 
        crossorigin 
         src="https://unpkg.com/react-dom@18/umd/react-dom.development.js">
-    </script>
+    </script> -->
 
        <!-- <script> -->
+
+         <!-- Order matters a lot in React -->
+
+         <!-- Try to play with your code a lot in React -->
+
+         <!-- He wants us to be a better developer find things for yourself, explore the web -->
+
+         <!-- Be curious about small things. Google everything. i pledge to be curious. I pledge i wont write code just for writing it. 
+            
+            Most of developers do that. they dont care why it is happening. dont be like that.
+         
+         -->
+
+         <!--  Now below script code will work -->
+         <!-- <script>
+
+            const heading = React.createElement("h1", {id: "heading", xyz: "abc"}, "Hello World from React")
+         
+            console.log(heading);
+            
+            const root = ReactDOM.createRoot(document.getElementById("root"));
+            
+            root.render(heading);
+         </script> -->
+      
 <!-- 
 
           const heading = React.createElement("h1", {}, "Hello World from React");
+          React gives us createElement which is an API
 
+          i  am using ReactDOM below because I want to modify my DOM
+
+          ReactDOM.createRoot tells what is the root element in my react...
           const root1 = ReactDOM.createRoot(document.getElementById("root"));
 
+
+          I want to put heading inside my root so I do root.render........
+
+           React can exist without Typescript. React can exist without JSX. React can exist without Redux
           root1.render(heading); -->
 
 
         <!-- </script> -->
 
+        <!-- <script>
 
-      <script src="./App.js">
+            const heading = React.createElement("h1", {id: "heading", xyz: "abc"}, "Hello World from React")
+
+            console.log(heading);
+            
+            const root = ReactDOM.createRoot(document.getElementById("root"));
+            
+            root.render(heading);
+        </script> -->
+
+
+      <script type="module" src="./App.js">
         
      </script>  
 

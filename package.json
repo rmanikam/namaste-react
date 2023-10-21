@@ -1,9 +1,11 @@
 {
   "name": "namastereact",
   "version": "1.0.0",
-  "description": "This is Namaste React by Akshay Saini",
-  "main": "App.js",
+  "description": "This is a Live course",
+  "source": "src/index.html",
   "scripts": {
+    "start": "parcel",
+    "build": "parcel build --dist-dir public",
     "test": "jest"
   },
   "repository": {
@@ -16,5 +18,18 @@
   "bugs": {
     "url": "https://github.com/rmanikam/namaste-react/issues"
   },
-  "homepage": "https://github.com/rmanikam/namaste-react#readme"
+  "homepage": "https://github.com/rmanikam/namaste-react#readme",
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "parcel": "^2.10.0",
+    "process": "^0.11.10"
+  },
+  "main": "App.js",
+  "browserslist": [
+    "last 2 Chrome version",
+    "last 2 Firefox version"
+  ]
 }

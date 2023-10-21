@@ -81,6 +81,29 @@ Package.lock.json has exact version of all transitive and all dependencies that 
 
 Node modules contain all code of it, git ignore contains all file which i dont want to push inside github.
 
+Order matters a lot in React
+
+
+What is npm?
+
+npm is used to manage all our packages, though npm official name is not node package manager.
+
+why we use npm?
+
+Because we want lot of packages in our project. Our react app cannot be built by just injecting react into our webpage. Our react app cannot be built by just injecting react into our webpage. it is like maven for react.
+
+npm - manages all of packages i.e we need to remove, we need to minify our thing.
+
+Our react app is a huge app which just does not run on react, there are lot of superpowers we need and those superpowers come from different packages and those packages are present inside npm.     
+
+
+
+
+
+
+
+suppose we have to minify it, suppose we have to bundle things up, suppose we have to remove console.log, suppose we have to optimise our app.
+for that we need lot of helper packages and those helper packages come in npm. 
 
 
 

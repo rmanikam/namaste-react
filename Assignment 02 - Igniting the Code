@@ -1,0 +1,122 @@
+Q1) What is NPM?
+A1) NPM is javascript package manner. npm is used to manage all our packages though npm official name is not node package manager.
+
+Q2) What is Parcel/Webpack? Why do we need it?
+A2) Parcel optimizes your whole app for production automatically. This includes tree-shaking and minifying your JavaScript, CSS, and HTML, resizing and optimizing images, content hashing, automatic code splitting, and much more.
+Parcel is used for
+-Development build
+-Runs on Local Server
+
+- It uses HMR = Hot Module Replacement
+- File Watching Algorithm - Written in C++
+- Caching - Everything Parcel does is cached – transformation, dependency resolution, bundling, optimizing, and everything in between. It is uses caching for faster builds
+- Image Optimization
+- Minification
+- Bundling
+- Compress
+  -Consistent Hashing
+- Code Splitting
+- Differential Bundling
+- Tree Shaking- removes unused code
+
+Webpack is a static module bundler for modern JavaScript applications.
+It combines every module your project needs into one or more bundles, which are static assets to serve your content from.
+
+Q3) What is .parcel-cache?
+A3) The .cache folder or .parcel-cache in parcel v2stores information about your project when parcel builds it, so that it doesn't have to reparse and reanalyze-everything from scratch. It's a key reason why parcel can be so fast in development mode.
+
+Q4) What is npx?
+A4) It s a tool for executing node packages
+
+Q5) What is difference between `dependancies` vs `devDependancies`?
+A5)In package.json there is an object called dependancies and it consists of all the packages that are used in the project with its version number. So whenever you install any library that is required in your project that library you can find it in the dependancies object
+ex npm install moment. After the module is installed, then if you navigate to the package.json file then you can find the moment with its version in the dependencies object as shown below:
+
+In package.json there is an object called dev dependancies and it consists of all the packages that are used in the project in its development phase and not in the production or testing environment with its version number. So whenever you want to install any library that is required only in your development phase then you czn find it in dev Dependancies object
+Installing the bootstrap module that we want to use in the development phase only and not in the production or testing phase for the project, use the following command:
+
+npm install bootstrap --save-dev
+
+After completion of the download, then if you navigate to the package.json file then you can find the bootstrap with its version in the dev Dependencies object as shown below:
+
+Q6) What is Tree Shaking?
+A6) When we import and export modules in JavaScript, most of the time there is unused code floating around. Tree shaking or dead code elimination means that unused modules will not be included in the bundle during the build process.
+
+Q7) What is Hot Module Replacement?
+
+A7) Developing a JavaScript application involves reloading the browser each time you save code changes in order to refresh the user interface.But soon developers started to think, is there a way to actually save and reflect changes to the browser without reloading? After all, reloading means losing whatever process you’re making on the UI:HMR allows you to exchange, add, or remove JavaScript modules while the application is running, all without having to reload the browser.
+
+Q8) List down your favourite 5 superpowers of Parcel and describe any 3 of them in your own words?
+
+A8)5 super powers of parcel are
+
+- Development build
+- It uses HMR = Hot Module Replacement
+- Caching - Everything Parcel does is cached – transformation, dependency resolution, bundling, optimizing, and everything in between. It uses caching for faster builds
+- Code Splitting
+- Tree Shaking- removes unused code
+  Explanation:-
+  1)Code Splitting
+  Parcel supports zero configuration code splitting out of the box. This allows you to split your application code into separate bundles which can be loaded on demand, resulting in smaller initial bundle sizes and faster load times.
+  2)Tree Shaking
+  When Parcel can determine which exports of a dynamically imported module you use, it will tree shake the unused exports from that module.
+
+3. Caching - Parcel caches everything it builds to disk. If you restart the dev server, Parcel will only rebuild files that have changed since the last time it ran. Parcel automatically tracks all of the files, configuration, plugins, and dev dependencies that are involved in your build, and granularly invalidates the cache when something changes. For example, if you change a configuration file, all of the source files that rely on that configuration will be rebuilt.
+   Q9) What is .gitignore? What should we add and not add into it?
+   A9) The .gitignore file is a text file that tells Git which files or folders to ignore in a project. we add into gitignore node_modules, dist and .parcel cache, Files that contain sensitive data and personal information such as .env files, Runtime files, such as .log files. They provide information on the Operating System’s usage activities and errors, as well as a history of events that have taken place within the OS
+
+Q10) What is difference between package.json and package-lock.json?
+A10)
+package.json - It contains information such as name, description, author, script, and dependencies.
+It is mandatory for every project.
+
+package-lock.json - It contains the name, dependencies, and locked version of the project.
+It is automatically generated for those operations where npm modifies either node_modules tree or package.json.
+
+Q11) Why should I not modify package-lock.json?
+A11)Dependency Consistency: The package-lock.json file ensures that your project's dependencies are consistent across different development environments. It locks the exact versions of each dependency, including sub-dependencies, to prevent unexpected changes when you or someone else installs the project on another machine. Manually modifying it can break this consistency and lead to dependency conflicts.
+Security: The package-lock.json file helps ensure the security of your project. By locking dependencies to specific versions, you're less likely to introduce vulnerabilities by accidentally upgrading to a version with known security issues. Modifying it manually might compromise your project's security.
+Reproducibility: A key benefit of package-lock.json is that it allows you to reproduce the exact environment used during development. This is crucial for debugging and testing, as it ensures that everyone working on the project has the same set of dependencies.
+Collaboration: When collaborating on a project with others, a consistent and unmodified package-lock.json file ensures that everyone is working with the same dependencies and versions, reducing potential issues and conflicts.
+Error Prevention: Manually modifying the package-lock.json file can lead to errors and issues in your project, including unexpected behavior, crashes, and conflicts.
+Q12) What is node_modules? Is it a good idea to push that on git?
+A12) node_modules folder contains external modules that your project depends upon.No, you should NOT commit the node_modules folder in Git.
+It just a directory created by npm and a way of tracking each packages you install locally via package.json. If you had tried deleting the node_module folder and ran the application, you would get Error:Cannot find module 'some-module/methods'. That basically means that your machine would complain that you are using some module, but but the machine is unable to locate it.
+
+Here are all the reasons why you shouldn't commit it:
+
+The node_modules folder has a massive size (up to Gigabytes).
+It is easy to recreate the node_modules folder via packages.json.
+It is unnecessary to commit code that you didn't write (in most cases).
+
+Q13) What is the dist folder?
+
+A13) It is a production-ready compiled version of your code. The shortform dist stands for distributable and refers to a directory where files will be stored that can be directly used by others without the need to compile or minify the source code that is being reused.
+
+Q14) What is browserslists? Read about diff bundlers: vite, webpack, parcel?
+A14) Browvserslist is a tool that allows specifying which browsers should be supported in your frontend app.
+The config to share target browsers and Node.js versions between different front-end tools.
+
+Q15) Read about ^ - caret and ~ - tilda?
+A15) Using a tilde sign before our version number means that we can accept only a patch release when updating our package.
+if we want to upgrade to major version we will use tilde. 2.8.3 to 3.0.0
+Example: The ~1.2.0 will update all the future patch updates. We have to write just ~1.2.0 and all the next patch update dependencies. For example, 1.2.1, 1.2.2, 1.2.5……………1.2.x.
+It will update you to all future patch versions, without incrementing the minor version. ~1.2.3 will use releases from 1.2.3 to <1.3.
+Tilda will update major version
+Caret (^) notation: It is used for automatically updating the minor updates along with patch updates.
+if we use caret we will upgrade parcel to minor version from 2.8.3 to 2.8.4.
+Caret will update minor version
+Q16) Read about script types in html(MDN Docs)?
+A16) The type attribute of the <script> element indicates the type of script represented by the element: a classic script, an import map, a JavaScript module, speculation rules, or a data block.
+
+importmap
+This value indicates that the body of the element contains an import map. The import map is a JSON object that developers can use to control how the browser resolves module specifiers when importing JavaScript modules.
+
+module
+This value causes the code to be treated as a JavaScript module. The processing of the script contents is deferred. The charset and defer attributes have no effect. 
+
+speculationrules Experimental
+This value indicates that the body of the element contains speculation rules. Speculation rules take the form of a JSON object that determine what resources should be prefetched or prerendered by the browser. 
+
+Any other value
+The embedded content is treated as a data block, and won't be processed by the browser. Developers must use a valid MIME type that is not a JavaScript MIME type to denote data blocks.
