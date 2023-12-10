@@ -2119,7 +2119,7 @@ const Body = () => {
       <div className="res-container">
         {/* how do i write js => ans is use curly braces */}
         {resList.map((restaurant) => (
-          <RestaurantCard resData={restaurant} />
+          <RestaurantCard key = {restaurant.data.id} resData={restaurant} />
         ))}
       </div>
     </div>
