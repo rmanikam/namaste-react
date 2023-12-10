@@ -1,0 +1,184 @@
+Q1) Is JSX mandatory for React?
+A1) JSX is not a requirement for using React. Using React without JSX is especially convenient when you don’t want to set up compilation in your build environment.
+
+Each JSX element is just syntactic sugar for calling React.createElement(component, props, ...children). So, anything you can do with JSX can also be done with just plain JavaScript.
+
+For example, this code written with JSX:
+
+class Hello extends React.Component {
+  render() {
+    return <div>Hello {this.props.toWhat}</div>;
+  }
+}
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<Hello toWhat="World" />);
+can be compiled to this code that does not use JSX:
+
+class Hello extends React.Component {
+  render() {
+    return React.createElement('div', null, `Hello ${this.props.toWhat}`);
+  }
+}
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(React.createElement(Hello, {toWhat: 'World'}, null));
+
+
+Q2) Is ES6 mandatory for React?
+A2)ES6 is the 6th version of the ECMAScript 
+programming language. ECMAScript is the 
+standardized javascript language released in 2015.
+ Reactjs is the best frontend library ever created.
+  It is made by Facebook to perform several task0
+  s in the frontend itself. ES6 is the 
+  standardization of javascript for making code
+  more readable and more accessible.
+
+If we don’t use ES6 in react, 
+there is an alternative to perform. 
+We use create-react-class instead of ES6.
+To use React without ES6, we need to install a node module create-react-class.
+
+In your React application, open the terminal and run the following command:
+
+npm i create-react-class
+
+This is the way to define the react class components without ES6. We take the help of the create-react-class module. 
+
+Firstly, We require the create-react-class module in our file. Then we create a variable app that uses the createReactClass API to define the render function.
+
+import React from "react";
+import "./App.css";
+
+var createReactClass = require('create-react-class');
+var App = createReactClass({
+  render: function() {
+    return <h1>Hello World</h1>;
+  }
+});
+
+export default App;
+
+Q3) How can I write comments in JSX?
+A3) Like other languages, JSX provides us with 
+the ability to write comments. Comments aid 
+readability, understandability, 
+maintainability, etc. of a codebase.
+JSX comments begin and end with curly braces {}. 
+Followed by the opening curly brace is a forward 
+slash and an asterisk. After that is the comment 
+and lastly, an asterisk, a forward slash and the
+ closing curly brace.
+
+ Q4) what is <React.Fragment><React.Fragment /> and <></>?
+ A4) What is React Fragment? ​ React Fragment is a 
+ feature in React that allows you to return
+  multiple elements from a React component by 
+  allowing you to group a list of children without
+   adding extra nodes to the DOM. To return
+    multiple elements from a React component, 
+    you'll need to wrap the element in a root 
+    element.
+The React framework offers a shorthand syntax for 
+fragment components that appears as an empty tag:
+ <></> . While it is supported in JSX syntax, 
+ it is not part of the HTML standard and thus 
+ is not supported natively by browsers.
+Q5) what is virtual DOM?
+A5) React JS Virtual DOM is an in-memory representation of the DOM. 
+    React uses Virtual DOM exists which is like a
+     lightweight copy of the actual 
+     DOM(a virtual representation of the DOM). 
+     So for every object that exists in the 
+     original DOM, there is an object for that 
+     in React Virtual DOM.
+
+Q6) What is reconcillation in React?
+A6) React Reconciliation is the process through
+ which React updates the Browser DOM. It makes 
+ the DOM updates faster in React. It updates 
+ the virtual DOM first and then uses the diffing 
+ algorithm to make efficient and optimized updates
+  in the Real DOM.
+
+  Q7) What is React Fiber? 
+  A7) React Fiber is a backwards compatible,
+   complete rewrite of the React core. In other
+    words, it is a reimplementation of older 
+    versions of the React reconciler.
+
+Introduced from React 16, Fiber Reconciler is the 
+new reconciliation algorithm in React. The term 
+Fiber refers to React's data structure (or)
+ architecture, and originates from 'fiber' -
+  a representation of a node of the DOM tree.
+
+  Q8) Why we need keys in React?When do we need 
+  keys in React?
+  A8) A “key” is a special string attribute you 
+  need to include when creating lists of elements 
+  in React. Keys are used in React to identify
+   which items in the list are changed, updated,
+    or deleted. Keys are used to give an identity
+     to the elements in the lists. Keys should be 
+     given to the elements inside the array to give
+      the elements a stable identity.
+      Most often you would use IDs from your data as keys
+      When you don’t have stable IDs for rendered 
+      items, you may use the item index as a key as
+       a last resort.We don’t recommend using 
+       indexes for keys if the order of items 
+       may change. This can negatively impact 
+       performance and may cause issues with 
+       component state.
+        If you use indices as keys and remove an item 
+        from the list, React may not properly update 
+        the component's state. This can cause 
+        components to render incorrect data, leading to 
+        inconsistencies and bugs in your application.
+Q9) What is props in React?
+A9) React Props are like function arguments 
+in JavaScript and attributes in HTML.
+Props are arguments passed into React components.
+You use props to pass data and values from one
+ component to another to get dynamic and unique 
+ outputs. The term 'props' is an abbreviation for 
+ 'properties' which refers to the properties of 
+ an object.
+
+Q10) What is config driven UI?
+A10) Configuration-driven UI, also known as 
+config-driven UI or configuration-based UI - 
+When you build real a world application so you
+ want should your website work in many country 
+ or many place we control our fontend it is 
+ known as using Config-Driven UI . API or 
+ Backend Driven which is data Comming from API.
+
+or
+
+In a configuration-driven UI, the layout, styles,
+ and other properties of UI elements are defined 
+ in a configuration file or database, which can be
+  easily modified without requiring changes to the 
+  codebase. This approach makes it easier to 
+  customize the UI for different use cases or user
+   groups, without the need for extensive coding.
+
+The configuration file or database may also define
+ the data sources and the data to be displayed in
+  the UI, as well as the interactions and behavior
+   of the UI components. This allows for greater
+    flexibility and adaptability of the UI to 
+    different use cases, as the configuration 
+    data can be easily modified or replaced without
+     affecting the underlying application logic.
+
+Config-driven UI is a technique that allows you
+ to create user interfaces based on a configuration
+  file, such as JSON, or a TypeScript file that
+   defines the layout and content of the UI
+    components. This can be useful for creating
+     dynamic and customizable UIs without hard 
+     coding them.
