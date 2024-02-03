@@ -5,40 +5,45 @@
 }
 
 .logo {
-  width: 200px;
+  width: 112px;
+  height: 100px;
 }
 
-.nav-items {
-  padding: 0px 20px;
-}
 .nav-items > ul {
   font-size: 24px;
   display: flex;
-  list-style-type: none;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .nav-items > ul > li {
+  margin-right: 20px;
+  list-style-type: none;
   padding: 10px;
-  margin: 10px;
-}
-.res-container {
-  display: flex;
-  flex-wrap: wrap;
-}
-.res-card {
-  margin: 5px;
-  padding: 5px;
-  width: 200px;
-}
-.res-card:hover {
-  cursor: pointer;
-  border: 1px solid black;
 }
 
+.res_card {
+  width: 197px;
+  height: 402px;
+  margin: 20px;
+  padding: 5px;
+}
+.res_card:hover {
+  cursor: pointer;
+  border: 1px solid #000;
+}
 .search {
   padding: 10px;
 }
 
 .res-logo {
-  width: 100%;
+  width: 207px;
+  height: 116px;
+  margin-left: -5px;
+  margin-top: -4px;
+}
+
+.restaurant_container {
+  display: flex;
+  flex-wrap: wrap;
 }
