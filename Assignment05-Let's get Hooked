@@ -1,0 +1,95 @@
+// Q1) What is the difference between Named Export, Default export and \* as export?
+// A1) With named export, one can have multiple named export per file. And then when you want to import a named
+//  component, you use the same name it was exported with.
+// Names must be imported inside curly brackets.
+// ● What is the importance of config.js file
+// ● What are React Hooks?
+// ● Why do we need a useState Hook?
+
+// Named Export: (export)
+// With named export, one can have multiple named export per file. And then when you want to import a named component, you use the same name it was exported with.
+// Names must be imported inside curly brackets.
+
+// You can rename your import with an alias if you have collisions in a file.
+
+// import { MyTestComponent as NewComponent } from '../MyTestComponent'
+// You can import multiple named exports.
+
+// import {MyComponent,MyComponentNew,...} from './MyComponent'
+
+// A real-world example would be, suppose you have to develop a helper function that converts your date-time object into a date format that you want, one maybe like April 30 2022 or another helper returns a date format like 30 Apr 22.
+// These two helpers' functions can be written in one file as both are used for date conversion and exported with the usage of named export.
+
+// Default Export : (export default )
+// Default exports are created by including a default tag in the export. One can have only one default export per file. When we import we have to specify a name and import like:
+
+// Note, that you can only have one default export per file.
+
+// When importing a default export, you don’t use curly braces. The naming of import is completely independent in default export and we can use any name we like.
+
+// import AnyNameYouWant from "./MyComponent"
+
+// When to use named export and when to use default export?
+// Use named export when you want to export multiple variables or functions from a file.
+// Use default export when you want to export only one variable or function from a file.
+// Use named export when you want to keep the same name for your variables or functions across different files.
+// However, it's important to note that you can use both default and named exports in the same file.
+
+// we can use the \* symbol to import all the named exports from a file as an object,
+
+// Q2) What is the importance of config.js file
+
+// A2) Config. js allows developers to configure their applications in an XML block instead of hard-coding values inside their scripts or in JSON objects. The XML can be embedded inside an HTML document or in a separate XML file. The configuration block may contain strings, numbers, arrays and HTML.
+
+// Why we need configuration
+// Configuration files ("config files" for short) are important to modern computing. They allow you to customize how you interact with an application or how an application interacts with the rest of your system. It's thanks to config files that any time you launch an application, it has "memories" of how you like to use it.
+
+// Configuration files can be, and often are, very simple in structure. For instance, if you were to write an application, and the only thing it ever needed to know was its user's preferred name, then its one and only config file could contain exactly one word: the name of the user. For example:
+
+// Tux
+// Usually, though, an application needs to keep track of more than just one piece of information, so configuration often uses a key and a value:
+
+// NAME='Tux'
+// SPECIES='Penguin'
+// Even without programming experience, you can imagine how code parses that data. Here are two simple examples, one using the awk command and the other using the grep command, focusing on just the line containing the "key" of NAME, and returning the "value" appearing after the equal sign (=):
+
+// $ awk -F'=' '/NAME/ { print $2; }' myconfig.ini
+// 'Tux'
+// $ grep NAME fake.txt | cut -d'=' -f2
+// 'Tux'
+// The same principle applies to any programming language and any configuration file. As long as you have a consistent data structure, you can write simple code to extract and parse it when necessary.
+
+// JSON
+// JSON files are technically subsets of YAML, so its data structure is the same, although its syntax is completely different:
+
+// {
+// "Example": {
+// "Name": [
+// "Tux"
+// ],
+// "Style": [
+// "widgety",
+// "fidgety"
+// ],
+// "Enabled": 1
+// }
+// }
+// JSON is popular among JavaScript programmers, which isn't surprising, given that JSON stands for JavaScript Object Notation. As a result of being strongly associated with web development, JSON is a common output format for web APIs. Most programming languages have libraries to parse JSON.
+
+// Q3) What are React Hooks?
+
+// A3)
+
+// React Hooks are simple JavaScript functions that we can use to isolate the reusable part from a functional component. Hooks can be stateful and can manage side-effects.
+// React provides a bunch of standard in-built hooks:
+
+// useState: To manage states. Returns a stateful value and an updater function to update it.
+// useEffect: To manage side-effects like API calls, subscriptions, timers, mutations, and more.
+
+// Q4) Why do we need a useState Hook?
+
+// A4) The React useState Hook allows you to have state variables in functional components. You pass the initial state to this function, and it returns a variable with the current state value (not necessarily the initial state) and another function to update this value.
+// useState is React Hook that allows you to add state to a functional component. It returns an array with two values: the current state and a function to update it. The Hook takes an initial state value as an argument and returns an updated state value whenever the setter function is called. It can be used like this:
+
+// const [state, setState] = useState(initialValue);
+// Here, the initialValue is the value you want to start with, and state is the current state value that can be used in your component. The setState function can be used to update the state, triggering a re-render of your component.
