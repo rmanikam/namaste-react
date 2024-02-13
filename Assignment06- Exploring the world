@@ -1,0 +1,429 @@
+Q1) What is a Microservice?
+
+A1) Microservices - also known as the microservice architecture - is an architectural style that structures an application as a collection of services that are:
+
+Independently deployable
+Loosely coupled
+Services are typically organized around business capabilities. Each service is often owned by a single, small team.
+
+The microservice architecture enables an organization to deliver large, complex applications rapidly, frequently, reliably and sustainably - a necessity for competing and winning in today’s world.
+
+Microservices
+It is an architectural development style in which the application is made up of smaller services that handle a small portion of the functionality and data by communicating with each other directly using lightweight protocols like HTTP. According to Sam Newman, “Microservices are the small services that work together.”
+
+The Microservice architecture has a significant impact on the relationship between the application and the database. Instead of sharing a single database with other microservices, each microservice has its own database. It often results in duplication of some data, but having a database per microservice is essential if you want to benefit from this architecture, as it ensures loose coupling. Another advantage of having a separate database per microservice is that each microservice can use the type of database best suited for its needs. Each service offers a secure module boundary so that different services can be written in different programming languages. There are many patterns involved in microservice architecture like service discovery & registry, caching, API gateway & communication, observability, security, etc.
+
+Principles of microservices:
+
+Single responsibility: It is one of the principles defined as a part of the SOLID design pattern. It states that a single unit, either a class, a method, or a microservice should have one and only one responsibility. Each microservice must have a single responsibility and provide a single functionality. You can also say that: the number of microservices you should develop is equal to the number of functionalities you require. The database is also decentralized and, generally, each microservice has its own database.
+Built around business capabilities: In today’s world, where so many technologies exist, there is always a technology that is best suited for implementing a particular functionality. But in monolithic applications, it was a major drawback, as we can’t use different technology for each functionality and hence, need to compromise in particular areas. A microservice shall never restrict itself from adopting an appropriate technology stack or backend database storage that is most suitable for solving the business purpose, i.e., each microservice can use different technology based on business requirements.
+Design for failure: Microservices must be designed with failure cases in mind. Microservices must exploit the advantage of this architecture and going down one microservice should not affect the whole system, other functionalities must remain accessible to the user. But this was not the case in the Monolithic applications, where the failure of one module leads to the downfall of the whole application.
+
+Advantages of microservices:
+
+It is easy to manage as it is relatively smaller.
+If there’s any update in one of the microservices, then we need to redeploy only that microservice.
+Microservices are self-contained and, hence, deployed independently. Their start-up and deployment times are relatively less.
+It is very easy for a new developer to onboard the project as he needs to understand only a particular microservice providing the functionality he will be working on and not the whole system.
+If a particular microservice is facing a large load because of the users using that functionality in excess, then we need to scale out that microservice only. Hence, the microservices architecture supports horizontal scaling.
+Each microservice can use different technology based on the business requirements.
+If a particular microservice goes down due to some bug, then it doesn’t affect other microservices and the whole system remains intact and continues providing other functionalities to the users.
+Disadvantages of microservices:
+
+Being a distributed system, it is much more complex than monolithic applications. Its complexity increases with the increase in a number of microservices.
+Skilled developers are required to work with microservices architecture, which can identify the microservices and manage their inter-communications.
+Independent deployment of microservices is complicated.
+Microservices are costly in terms of network usage as they need to interact with each other and all these remote calls result in network latency.
+Microservices are less secure relative to monolithic applications due to the inter-services communication over the network.
+Debugging is difficult as the control flows over many microservices and to point out why and where exactly the error occurred is a difficult task.
+
+Q2) What is Monolith architecture?
+A2) A monolithic architecture is the traditional unified model for the design of a software program.Monolithic, in this context, means "composed all in one piece."
+Monolithic software is designed to be self-contained, wherein the program's components or functions are tightly coupled rather than loosely coupled, like in modular software programs.
+Monolithic applications are single-tiered, which means multiple components are combined into one large application.Monolithic applications are single-tiered, which means multiple components are combined into one large application. Consequently, they tend to have large codebases, which can be cumbersome to manage over time.Furthermore, if one program component must be updated, other elements may also require rewriting, and the whole application has to be recompiled and tested. The process can be time-consuming and may limit the agility and speed of software development teams. Despite these issues, the approach is still in use because it does offer some advantages. Also, many early applications were developed as monolithic software, so the approach cannot be completely disregarded when those applications are still in use and require updates.
+To understand monolithic architecture, let's take an example of a banking application. The banking application website first authorizes customers, logs them in to their account and enables them to make online money transfers to other accounts. There are several components involved in this entire process, including the customer-facing user interface, plus services for user authentication, statement downloads, money transfers, etc.
+
+If the application uses a monolithic architecture, it is built and deployed as a single application, regardless of how a customer uses it. Thus, whether users access the application from their desktop or from a mobile device, the application remains tightly coupled, and all the various components and modules are directly connected to each other. It may also use a relational database management system as a single data source. Finally, if changes are needed for any one component, code changes are required for all other affected components as well.
+
+Monolithic applications
+If all the functionalities of a project exist in a single codebase, then that application is known as a monolithic application. We all must have designed a monolithic application in our lives in which we were given a problem statement and were asked to design a system with various functionalities. We design our application in various layers like presentation, service, and persistence and then deploy that codebase as a single jar/war file. This is nothing but a monolithic application, where “mono” represents the single codebase containing all the required functionalities.
+
+But if we were using monolithic applications already, then what led us to microservices?
+
+Disadvantages of Monolithic applications:
+
+It becomes too large with time and hence, difficult to manage.
+We need to redeploy the whole application, even for a small change.
+As the size of the application increases, its start-up and deployment time also increases.
+For any new developer joining the project, it is very difficult to understand the logic of a large Monolithic application even if his responsibility is related to a single functionality.
+Even if a single part of the application is facing a large load/traffic, we need to deploy the instances of the entire application in multiple servers. It is very inefficient and takes up more resources unnecessarily. Hence, horizontal scaling is not feasible in monolithic applications.
+It is very difficult to adopt any new technology which is well suited for a particular functionality as it affects the entire application, both in terms of time and cost.
+It is not very reliable, as a single bug in any module can bring down the entire monolithic application.
+
+Advantages of monolithic applications:
+
+Simple to develop relative to microservices, where skilled developers are required in order to identify and develop the services.
+Easier to deploy as only a single jar/war file is deployed.
+Relatively easier and simple to develop in comparison to microservices architecture.
+The problems of network latency and security are relatively less in comparison to microservices architecture.
+Developers need not learn different applications, they can keep their focus on one application.
+
+Q3) What is the difference between Monolith and Microservice?
+
+Sr. No. Key Monolithic architecture Microservices architecture
+
+1.  Basic
+    Monolithic architecture is built as one large system and is usually one code-base
+    Microservices architecture is built as small independent module based on business functionality
+2.  Scale
+    It is not easy to scale based on demand
+    It is easy to scale based on demand.
+3.  Database
+    It has shared database
+    Each project and module has their own database
+4.  Deployment
+    Large code base makes IDE slow and build time gets increase.
+    Each project is independent and small in size. So overall build and development time gets decrease.
+5.  Tightly Coupled and Loosely coupled
+    It extremely difficult to change technology or language or framework because everything is tightly coupled and depend on each other
+    Easy to change technology or framework because every module and project is indepe
+    Q4) Why do we need a useEffect Hook?
+    A4) The useEffect Hook allows you to perform side effects in your components. Some examples of side effects are: fetching data, directly updating the DOM, and timers.
+
+Why is it called useEffect?
+When the core React Hooks were added to the library in 2018 (useState, useEffect, and so on), many developers were confused by the name of this hook: "useEffect".
+
+What exactly is an "effect"?
+
+The word effect refers to a functional programming term called a "side effect".
+
+But to really understand what a side effect is, we first have to grasp the concept of a pure function.
+
+You may not know this, most React components are intended to be pure functions.
+
+It may be strange to think about React components as functions, but they are.
+
+It helps to see that a regular React function component is declared like a JavaScript function:
+
+function MyReactComponent() {}
+Most React components are pure functions, meaning they receive an input and produce a predictable output of JSX.
+
+The input to a JavaScript function is arguments. What is the input to a React component, however? Props!
+
+Here we have a User component that has the prop name declared on it. Within User, the prop value is displayed in a header element.
+
+export default function App() {
+return <User name="John Doe" />  
+}
+
+function User(props) {
+return <h1>{props.name}</h1>; // John Doe
+}
+This is pure because, given the same input, it will always return the same output.
+
+If we pass User a name prop with value "John Doe", our output will always be John Doe.
+
+You might be saying, "Who cares? Why do we even have a name for this?"
+
+Pure functions have the great benefit of being predictable, reliable, and easy to test.
+
+This is as compared to when we need to perform a side effect in our component.
+
+What are side effects in React?
+Side effects are not predictable because they are actions which are performed with the "outside world."
+
+We perform a side effect when we need to reach outside of our React components to do something. Performing a side effect, however, will not give us a predictable result.
+
+Think about if we were to request data (like blog posts) from a server that has failed and instead of our post data, gives us a 500 status code response.
+
+Virtually all applications rely on side effects to work in one way or another, aside from the simplest applications.
+
+Common side effects include:
+
+Making a request to an API for data from a backend server
+To interact with browser APIs (that is, to use document or window directly)
+Using unpredictable timing functions like setTimeout or setInterval
+This is why useEffect exists: to provide a way to handle performing these side effects in what are otherwise pure React components.
+
+For example, if we wanted to change the title meta tag to display the user's name in their browser tab, we could do it within the component itself, but we shouldn't.
+
+function User({ name }) {
+document.title = name;
+// This is a side effect. Don't do this in the component body!
+
+return <h1>{name}</h1>;  
+}
+If we perform a side effect directly in our component body, it gets in the way of our React component's rendering.
+
+Side effects should be separated from the rendering process. If we need to perform a side effect, it should strictly be done after our component renders.
+
+This is what useEffect gives us.
+
+In short, useEffect is a tool that lets us interact with the outside world but not affect the rendering or performance of the component that it's in.
+
+What is useEffect hook ?
+The useEffect hook in React is used to handle the side effects in React such as fetching data, and updating DOM. This hook runs on every render but there is also a way of using a dependency array using which we can control the effect of rendering
+
+Reason to choose useEffect hook :
+The motivation behind the introduction of useEffect Hook is to eliminate the side effects of using class-based components. For example, tasks like updating the DOM, fetching data from API end-points, setting up subscriptions or timers, etc can lead to unwarranted side effects. Since the render method is too quick to produce a side-effect, one needs to use life cycle methods to observe the side effects.
+
+Importing useEffect hook
+To import the useEffect hook, write the following code at the top level of your component
+
+import { useEffect } from "react"
+Structure of useEffect hook
+The useEffect hook accepts two arguments where the second argument is optional
+
+Syntax:
+
+useEffect(<FUNCTION>, <DEPENDECY>)
+We know that the useEffect() is used for causing side effects in functional components and it is also capable of handling componentDidMount(), componentDidUpdate(), and componentWillUnmount() life-cycle methods of class-based components into the functional components.
+
+Ways of controlling side effects in useEffect hook
+
+1. To run useEffect on every render do not pass any dependency
+
+useEffect(()->{
+// Example Code
+}) 2. To run useEffect only once on the first render pass any empty array in the dependecy
+
+useEffect(()->{
+// Example Code
+}, [] ) 3. To run useEffect on change of a particular value. Pass the state and props in the dependency array
+
+useEffect(()->{
+// Example Code
+}, [props, state] )
+Let’s look at an example of how to use the useEffect hook as a feature that can mimic the life-cycle methods but in functional components. The functional component will look like the code below:
+
+Example: Write the following code in the respective file
+
+src/components/HookCounterOne.js: useEffect is implemented in this component
+App.js: The component is imported and rendered using this component
+Javascript
+//HookCounterOne.js File
+import { useState, useEffect } from "react";
+
+function HookCounterOne() {
+const [count, setCount] = useState(0);
+
+    useEffect(() => {
+        document.title = `You clicked ${count} times`;
+    }, [count]);
+
+    return (
+        <div>
+            <button onClick={() => setCount((prevCount) => prevCount + 1)}>
+                Click {count} times{" "}
+            </button>
+        </div>
+    );
+
+}
+export default HookCounterOne;
+Javascript
+//App.js File
+import React from "react";
+import "./App.css";
+import HookCounterOne from "./components/HookCounterOne";
+
+function App() {
+return (
+<div className="App">
+<HookCounterOne />
+</div>
+);
+}
+export default App;
+Output: Initially, the document title reads “You clicked 0 times”. when you click on the button, the count value increments, and the document title is updated.
+
+Animation1
+
+When we specify useEffect we are basically requesting react to execute the function that we pass in the useEffect function as an argument, every time the component renders. The second thing to make note of is that useEffect is used inside the component as by doing this we can easily access the components state and props without having to write any additional code.
+If you want to use the react lifecycle methods in functional components then copy and paste the code snippet given below and customize them as per your requirement.
+
+Ways to mimic lifecycle methods using useEffect hook
+For componentDidMount
+useEffect(()=>{
+//You can add your code here for mounting phase of component
+console.log("Mounting in Functional Component")
+},[])
+// adding an empty array ensures that the useEffect is only triggered once
+// (when the component mounts)
+For componentDidUpdate
+useEffect(()=>{
+//You can add your code for updating phase of component
+console.log("Updating in Functional Component")
+},[values])
+//values triggers re render whenever they are updated in your program,
+//you can add multiple values by separating them by commas
+
+For componentWillUnmount
+useEffect(()=>{
+return()=>{
+//You can add your code for unmounting phase of component
+console.log("Functional Component Removed ")
+}
+},[])
+//Write all the code of unmounting phase only inside the callback function
+
+Q5) What is Optional Chaining?
+A5) Optional chaining (?.) The optional chaining ( ?. ) operator accesses an object's property or calls a function. If the object accessed or function called using this operator is undefined or null , the expression short circuits and evaluates to undefined instead of throwing an error.
+Q6) What is Shimmer UI?
+A6)A better way to show loading states is to use a shimmer UI. A shimmer UI is a version of the UI that doesn’t contain actual content, but instead mimics the layout and shapes of the content that will eventually appear. It uses a gradient animation that creates a shimmering effect over the placeholders, giving the user a sense of motion and progress.
+
+A shimmer UI has many benefits over traditional loading indicators:
+
+It improves the perceived performance of the app by making it seem faster and more responsive.
+It reduces the cognitive load on the user by providing visual cues about the type and structure of the content that is being loaded.
+It eliminates surprises and confusion by showing a consistent and predictable UI before and after loading.
+It enhances the aesthetic appeal and user satisfaction by creating a smooth and elegant transition from loading to loaded.
+Q7) What is the difference between JS expression and JS statement
+A7) Expressions produce a value, and that value will be passed into the function. Statements don't produce a value, and so they can't be used as function arguments.
+Q8) What is Conditional Rendering, explain with a code example
+A8) In React, conditional rendering is the process of displaying different content based on certain conditions or states. How to Implement React Conditional Rendering
+In React, there are different ways to conditionally render content based on the state of a component or other conditions. Two common ways are using the ternary operator and the && operator.
+
+function Greeting(props) {
+const isLoggedIn = props.isLoggedIn;
+return (
+<div>
+{isLoggedIn ? (
+<h1>Welcome back!</h1>
+) : (
+<h1>Please sign up.</h1>
+)}
+</div>
+);
+}
+ternary operator
+In the above code, we used the ternary operator isLoggedIn ? ... : ... to conditionally render the message depending on whether the user is logged in or not.
+
+function Greeting(props) {
+const isLoggedIn = props.isLoggedIn;
+return (
+<div>
+{isLoggedIn && <h1>Welcome back!</h1>}
+</div>
+);
+}
+&& operator
+In the above code, we used the && operator to conditionally render the message if isLoggedIn is true.
+
+Both of these methods are effective for conditionally rendering content in React. Which one to use often comes down to personal preference or the specific use case.
+
+The ternary operator may be more useful when there are multiple conditions to check, while the && operator can be simpler and more concise when there is only one condition.
+
+import React, { useState } from "react";
+
+const App = () => {
+const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+const handleLogin = () => {
+setIsLoggedIn(true);
+};
+
+const handleLogout = () => {
+setIsLoggedIn(false);
+};
+
+return (
+<div>
+{isLoggedIn ? (
+<div>
+<h1>Welcome Back!</h1>
+<button onClick={handleLogout}>Logout</button>
+</div>
+) : (
+<div>
+<h1>Please Login</h1>
+<button onClick={handleLogin}>Login</button>
+</div>
+)}
+</div>
+);
+};
+
+export default App;
+In this example, we have a component App that renders different content based on the isLoggedIn state. Initially, isLoggedIn is set to false using the useState hook.
+
+When the user clicks on the "Login" button, the handleLogin function is called, which sets the isLoggedIn state to true. Similarly, when the user clicks on the "Logout" button, the handleLogout function is called, which sets the isLoggedIn state to false.
+
+The return statement of the App component uses a ternary operator to render different content based on the value of isLoggedIn. If isLoggedIn is true, it renders a welcome message and a "Logout" button. If isLoggedIn is false, it renders a message asking the user to login along with a "Login" button.
+
+This example demonstrates how you can use conditional rendering to create dynamic user interfaces that can adapt to changes in the application state.
+
+By using the useState hook to manage the isLoggedIn state and conditional statements to decide what content should be rendered, we can create a simple login/logout system that changes the content of the page based on the user's authentication status.
+
+Q9) What is CORS?
+A9) Cross-Origin Resource Sharing (CORS) is an HTTP-header based mechanism that allows a server to indicate any origins (domain, scheme, or port) other than its own from which a browser should permit loading resources. CORS also relies on a mechanism by which browsers make a "preflight" request to the server hosting the cross-origin resource, in order to check that the server will permit the actual request. In that preflight, the browser sends headers that indicate the HTTP method and headers that will be used in the actual request.
+
+An example of a cross-origin request: the front-end JavaScript code served from https://domain-a.com uses fetch() to make a request for https://domain-b.com/data.json.
+
+For security reasons, browsers restrict cross-origin HTTP requests initiated from scripts. For example, fetch() and XMLHttpRequest follow the same-origin policy. This means that a web application using those APIs can only request resources from the same origin the application was loaded from unless the response from other origins includes the right CORS headers.
+Q10) What is async and await?
+A10) Async Syntax
+The keyword async before a function makes the function return a promise:
+Example
+async function myFunction() {
+return "Hello";
+}
+Is the same as:
+
+function myFunction() {
+return Promise.resolve("Hello");
+}Await Syntax
+The await keyword can only be used inside an async function.
+
+The await keyword makes the function pause the execution and wait for a resolved promise before it continues:
+
+let value = await promise;
+
+async function myDisplay() {
+let myPromise = new Promise(function(resolve, reject) {
+resolve("I love You !!");
+});
+document.getElementById("demo").innerHTML = await myPromise;
+}
+
+myDisplay();
+
+async function myDisplay() {
+let myPromise = new Promise(function(resolve) {
+resolve("I love You !!");
+});
+document.getElementById("demo").innerHTML = await myPromise;
+}
+
+myDisplay();
+
+Waiting for a File
+async function getFile() {
+let myPromise = new Promise(function(resolve) {
+let req = new XMLHttpRequest();
+req.open('GET', "mycar.html");
+req.onload = function() {
+if (req.status == 200) {
+resolve(req.response);
+} else {
+resolve("File not Found");
+}
+};
+req.send();
+});
+document.getElementById("demo").innerHTML = await myPromise;
+}
+
+getFile();
+
+Q11) What is the use of `const json = await data.json();` in getRestaurants()
+
+A11) const data = await fetch('/movies');
+const movies = await data.json();
+return movies;
+
+data.json() is a method of the data object that allows a JSON object to be extracted from the data. The method returns a promise, so you have to wait for the JSON: await data.json().
+
+The data object offers a lot of useful methods (all returning promises):
+
+data.json() returns a promise resolved to a JSON object

@@ -47,3 +47,19 @@
   display: flex;
   flex-wrap: wrap;
 }
+.shimmer_container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.shimmer-card {
+  width: 200px;
+  height: 200px;
+  margin: 20px;
+  background-color: gray;
+}
+
+.login {
+  cursor: pointer;
+  padding: 0 20px;
+}
