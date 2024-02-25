@@ -1,0 +1,262 @@
+// Q1) What are various ways to add images into our App? Explain with code examples
+
+// A1) 4 WAYS TO DISPLAY IMAGES IN REACT JS
+// 1) Use the import keyword.
+// 2) Use the require keyword.
+// 3) Import SVGs directly as a React component.
+// 4) Load images directly from the network.
+
+// How to Use the Import Keyword in React to Load Images
+// You can import a file right in a JavaScript module. This tells a webpack to include that file in the bundle. Your code will look like this:
+
+// // House.js
+// import React from 'react';
+// import house from ./house.jpg';
+// function House() {
+// console.log(house); //
+// /static/media/house.db639cad.jpg
+// return (
+// <div className="App">
+// <img src={house} alt="House image" height={200} width={200} />
+// </div>
+// );
+// }
+// export default House;
+
+// This ensures that when the project is built, webpack will move the images into the build folder and provide you with correct paths.
+
+// How to Use the Require Keyword in React to Load Images
+// We can also use the require keyword to load the images into your component. When you do that, your code should look like this:
+
+// // House.js
+// import React from 'react';
+// function House() {
+// return (
+// <div className="App">
+// <img src={require('./house.jpg')} alt="House image" />
+// </div>
+// );
+// }
+// export default House;
+// require can also be used for including audio, video or document files in your project. The most common types are .mp3, .wav, .mp4, .mov, .html and .pdf.
+
+// How to Add SVG Files to React
+// One way to add scalable vector graphic (SVG) files is described above, but you can also import SVGs directly as React components. In your code, it would look like this:
+
+// // House.js
+// import React from 'react';
+// import { ReactComponent as Logo } from './logo.svg';
+// function House() {
+// return (
+// <div className="House">
+// <Logo />
+// </div>
+// );
+// }
+// export default House;
+
+// This is handy if you don’t want to load the SVG as a separate file. Don’t forget the curly braces in the import. The ReactComponent import name is significant and tells Create React App that you want a React component that renders an SVG rather than its filename.
+
+// This feature is available with react-scripts@2.0.0 and higher as well as react@16.3.0 and higher.
+
+// How to Add Network Images to React
+// If you are loading images from the network, then it’s a pretty straightforward approach. In your code, it would look like this:
+
+// // House, js
+// import React from 'react';
+// function House() {
+// return (
+// <div className="App">
+// <img src="https://miro.medium.com/max/5472/6*y7oP@ChkXHI9SPSQ" />
+// <img src={'https://miro.medium.com/max/5472/0*y7oP@ChkXHI9SPSQ'} />
+// </div>
+// );
+// }
+// export default House;
+// These are the different ways to include images in your React application.
+
+// Q2)
+
+// A2) What would happen if we do console.log(useState())?
+// function ExampleComponent() {
+//   console.log(useState());
+//   If you were to use console.log(useState()),
+//    it would log the initial state value and the update function to the console.
+//   const [count, setCount] = useState(0);
+
+// The console output might look something like this:  [0, ƒ]
+// In this example, [0, ƒ] represents an array where 0 is the initial state value (in this case, 0),
+// and ƒ is a function that allows you to update the state (in this case, setCount function).
+// The actual values may vary depending on your initial state value.
+
+// }
+// ExampleComponent();
+
+// Q3) How will useEffect behave if we don't add a dependency array ?
+
+// A3) When you use useEffect without a dependency array, the effect will run after every render,
+// including the initial render.
+
+// Here's an example:
+
+// import React, { useEffect, useState } from 'react';
+
+// function ExampleComponent() {
+//   const [count, setCount] = useState(0);
+
+//   useEffect(() => {
+//     console.log('Effect ran!');
+//     // Your side effect code goes here...
+//   });
+
+//   return (
+//     <div>
+//       <p>{count}</p>
+//       <button onClick={() => setCount(count + 1)}>Increment</button>
+//     </div>
+//   );
+// }
+
+// Q4) What is SPA?
+// A4) A Single Page Application is a web application or website that interacts with the web browser by
+//  dynamically rewriting the current web page with new data from the web server, instead of the default
+//   method of the browser loading entire new pages.
+
+// This means that the URL of your website will not change completely (page will not reload), instead
+//  it will keep getting content and rewriting the DOM with it instead of loading a new page.
+
+// The goal is faster transitions that make the website feel more like a native app.
+
+// An SPA (Single-page application) is a web app implementation that loads only a single web document, and then
+// updates the body content of that single document via JavaScript APIs such as Fetch when different
+//  content is to be shown.
+
+// This therefore allows users to use websites without loading whole new pages from the server,
+// which can result in performance gains and a more dynamic experience.
+
+// Q5) What is difference between Client Side Routing and Server Side Routing?
+// A5) First and foremost: let’s define routing for those who may be new to the concept.
+
+// In web development, routing often refers to splitting an application’s UI based on rules derived from the browser
+//  URL. Imagine clicking a link and having the URL go from https://website.com to https://website.com/about/.
+//  That’s routing.
+
+// When we visit the / path of a website, we intend to visit the home route of that website. If we visit /about,
+// we want to render the About page, and so on.
+
+// Many applications can technically be written without routing but this can get messy as an application grows.
+// Defining routes in an application is useful since one can separate different areas of an app and protect areas
+//  of the app based on certain rules.
+
+// Routing is often categorized into two main buckets:
+
+// Server-side routing
+// Client-side routing
+// Server-Side Routing
+// In a server-driven application, requests to a URL often follow a pattern:
+
+// The client (i.e., browser) makes a request to the server for a particular page.
+// The server uses the identifiers in the URL pathname to retrieve the relevant data from its database.
+// The server populates a template (HTML document) with this data.
+// The server returns the template along with other assets like CSS/images to the client.
+// The client renders these assets.
+// For subsequent route changes, the client again sends a new request to the server, and the above is repeated.
+// Server-side routing is often set up to retrieve and return different information depending on the incoming URL.
+// Writing server-side routes with Express.js generally looks like the following:
+
+// const express = require("express");
+// const router = express.Router();
+
+// // define the about route
+// router.get("/about", function (req, res) {
+//   res.send("About us");
+// });
+
+// Whether it’s Express.js, Ruby on Rails, or any other server-side framework, the pattern often remains the same.
+//  The server accepts a request and routes it to a controller, and the controller runs a specific action
+//   (e.g., returns specific information), depending on the path and parameters.
+
+// Client-Side
+
+// Client-Side Routing
+// In applications employing client-side routing, the server initially provides a single HTML file, irrespective
+// of the URL path. This “shell” is then enriched and manipulated by JavaScript running in the browser. Subsequent
+//  navigation between different parts of the app does not send new requests to the server but
+//  rather modifies the displayed content based on the loaded JavaScript and data.
+
+// These are characteristic of single-page applications (SPAs)—web apps that load only once (i.e.,
+//     the server provides a single template) and JavaScript is used to dynamically render different pages.
+
+// The flow for client-side routing usually looks like the following:
+
+// The client makes an initial request to the server.
+// The server responds with a primary HTML document (the single page of the SPA) and associated assets
+//  (e.g., JavaScript, CSS).
+// The client interprets the JavaScript, and the app logic determines which content to display based on the URL path.
+// For subsequent route changes, the JavaScript updates the browser’s history and displayed content without a
+//  full page reload.
+// With client-side routing, while the initial load might seem slower because the entire app (or large parts of it)
+//  gets loaded, subsequent navigations are swift and seamless, as they don’t require round-trips to the server.
+
+// Client-side routing can be implemented using various libraries and frameworks. For instance, React Router
+// is a popular client-side routing library for React applications:
+
+// import * as React from "react";
+// import { createRoot } from "react-dom/client";
+// import {
+//   createBrowserRouter,
+//   RouterProvider,
+//   Route,
+//   Link,
+// } from "react-router-dom";
+
+// const router = createBrowserRouter([
+//   {
+//     path: "/",
+//     element: (
+//       <div>
+//         <h1>Hello World</h1>
+//         <Link to="about">About Us</Link>
+//       </div>
+//     ),
+//   },
+//   {
+//     path: "about",
+//     element: <div>About</div>,
+//   },
+// ]);
+
+// createRoot(document.getElementById("root")).render(
+//   <RouterProvider router={router} />
+// );
+
+// Server-Side Routing vs. Client-Side Routing
+// Both server-side and client-side routing have their places in modern web development. The choice between
+// them often comes down to the specific needs of the project.
+
+// In server-side routing:
+
+// The server only requests the webpage that the user is viewing, not the entire web app. As a result,
+// the initial page load is often faster since we’re only downloading the content for one webpage (pro).
+// Search engines find it easier to index server-rendered applications. This can be a key factor for sites
+// where search engine ranking is paramount (pro).
+// Every URL change results in a full-page refresh as the server returns the contents to the client. This is
+//  the unpleasant blinking state that’s shown to a user when a user navigates from route to route (con).
+// Templates that are to remain the same might have to be requested from the server over and over again
+// (e.g., a header and a footer that stays the same on all webpages) (con).
+// While in client-side routing:
+
+// Since there isn’t a need to wait for a server response after the initial page load, navigating between webpages
+// is often faster than server-rendered applications. Additionally, the white “blinking” state no longer exists
+// when navigating from route to route (pro).
+// Since the template of the entire web app needs to be loaded on the first request, the initial page load time
+//  is often longer than server-rendered applications (con).
+// Search engine crawling is less optimized. With modern browsers, there is some good progress being made on crawling
+//  SPAs for search engines, but it isn’t nearly as efficient as server-side routed websites (con).
+// If search engine optimization and initial page load speed are critical, server-side routing might be the way
+//  to go. On the other hand, if the priority is to provide a dynamic, app-like user experience, then client-side
+//   routing in a SPA could be the ideal choice.
+
+// Coding Assignment
+
+// Add Shimmer Effect without installing a library
