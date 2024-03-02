@@ -1,0 +1,312 @@
+// Theory Assignment:
+// Q1) How do you create Nested Routes react-router-dom cofiguration?
+// A1) Nested routes in React JS are implemented using the outlet in React Router Dom. Routing in React not only provides routing for the pages but also for switching the content inside that page. Nested routes implement this by defining Routes for Child components inside parent route components.
+// npx create-react-app nesting-demo
+// npm i react-router-dom
+
+// Filename: App.js
+
+// import {
+// BrowserRouter as Router,
+// Link,
+// Routes,
+// Route,
+// } from "react-router-dom";
+// import "./App.css";
+// import Home from "./Pages/Home";
+// import Courses from "./Pages/Courses";
+// import Search from "./Components/Search";
+// import List from "./Components/List";
+
+// function App() {
+// return (
+
+// <div className="App">
+// <Router>
+// <nav>
+// <Link to="/">Home</Link>
+// <Link to="courses">Courses</Link>
+// </nav>
+// <Routes>
+// <Route path="/" element={<Home />} />
+// <Route
+// path="/courses"
+// element={<Courses />} >
+// <Route
+// path="search"
+// element={<Search />}
+// />
+// <Route
+// path="list"
+// element={<List />}
+// />
+// </Route>
+// </Routes>
+// </Router>
+// </div>
+// );
+// }
+
+// export default App;
+
+// Q2) Read abt createHashRouter, createMemoryRouter from React Router docs?
+// A2) createHashRouter- This router is useful if you are unable to configure your web server to direct all traffic to your React Router application. Instead of using normal URLs, it will use the hash (#) portion of the URL to manage the "application URL". Using hash URLs is not recommended.
+
+// Using hash URLs is not recommended.
+
+// Other than that, it is functionally the same as createBrowserRouter.
+
+// import _ as React from "react";
+// import _ as ReactDOM from "react-dom";
+// import {
+// createHashRouter,
+// RouterProvider,
+// } from "react-router-dom";
+
+// import Root, { rootLoader } from "./routes/root";
+// import Team, { teamLoader } from "./routes/team";
+
+// const router = createHashRouter([
+// {
+// path: "/",
+// element: <Root />,
+// loader: rootLoader,
+// children: [
+// {
+// path: "team",
+// element: <Team />,
+// loader: teamLoader,
+// },
+// ],
+// },
+// ]);
+
+// ReactDOM.createRoot(document.getElementById("root")).render(
+// <RouterProvider router={router} />
+// );
+
+// Other than that, it is functionally the same as createBrowserRouter.
+// createBrowserRouter
+// This is the recommended router for all React Router web projects. It uses the DOM History API to update the URL and manage the history stack.
+
+// It also enables the v6.4 data APIs like loaders, actions, fetchers and more.
+
+// Due to the decoupling of fetching and rendering in the design of the data APIs, you should create your router outside of the React tree with a statically defined set of routes. For more information on this design, please see the Remixing React Router blog post and the When to Fetch conference talk.
+
+// import _ as React from "react";
+// import _ as ReactDOM from "react-dom";
+// import {
+// createBrowserRouter,
+// RouterProvider,
+// } from "react-router-dom";
+
+// import Root, { rootLoader } from "./routes/root";
+// import Team, { teamLoader } from "./routes/team";
+
+// const router = createBrowserRouter([
+// {
+// path: "/",
+// element: <Root />,
+// loader: rootLoader,
+// children: [
+// {
+// path: "team",
+// element: <Team />,
+// loader: teamLoader,
+// },
+// ],
+// },
+// ]);
+
+// createMemoryRouter - Instead of using the browser's history, a memory router manages its own history stack in memory. It's primarily useful for testing and component development tools like Storybook, but can also be used for running React Router in any non-browser environment.
+
+// import {
+// RouterProvider,
+// createMemoryRouter,
+// } from "react-router-dom";
+// import \* as React from "react";
+// import {
+// render,
+// waitFor,
+// screen,
+// } from "@testing-library/react";
+// import "@testing-library/jest-dom";
+// import CalendarEvent from "./routes/event";
+
+// test("event route", async () => {
+// const FAKE_EVENT = { name: "test event" };
+// const routes = [
+// {
+// path: "/events/:id",
+// element: <CalendarEvent />,
+// loader: () => FAKE_EVENT,
+// },
+// ];
+
+// const router = createMemoryRouter(routes, {
+// initialEntries: ["/", "/events/123"],
+// initialIndex: 1,
+// });
+
+// render(<RouterProvider router={router} />);
+
+// await waitFor(() => screen.getByRole("heading"));
+// expect(screen.getByRole("heading")).toHaveTextContent(
+// FAKE_EVENT.name
+// );
+// });
+
+// The initial entries in the history stack. This allows you to start a test (or an app) with multiple locations already in the history stack (for testing a back navigation, etc.)
+
+// createMemoryRouter(routes, {
+// initialEntries: ["/", "/events/123"],
+// });
+// initialIndex
+// The initial index in the history stack to render. This allows you to start a test at a specific entry. It defaults to the last entry in initialEntries.
+
+// createMemoryRouter(routes, {
+// initialEntries: ["/", "/events/123"],
+// initialIndex: 1, // start at "/events/123"
+// });
+// Q3) What is the order of life cycle method calls in Class Based Components?
+// A3) A component's lifecycle has three main phases: the Mounting Phase, the Updating Phase, and the Unmounting Phase. The Mounting Phase begins when a component is first created and inserted into the DOM. The Updating Phase occurs when a component's state or props change. And the Unmounting Phase occurs when a component is removed from the DOM.
+
+// Q4) Why do we use componentDidMount?
+// A4) The componentDidMount() method is also defined, which is called when the component is mounted in the DOM. In this method, there's a setTimeout() function that updates the state of favoritefood to "pizza" after 1 second (1000 milliseconds). The componentDidMount() lifecycle method
+// The componentDidMount() method is called once the component has been mounted into the DOM. It is typically used to set up any necessary event listeners or timers, perform any necessary API calls or data fetching, and perform other initialization tasks that require access to the browser's DOM API.
+
+// Q5) Why do we use componentWillUnmount? Show with example?
+// A5) Component Unmounting Phase
+// The unmounting phase refers to the lifecycle stage when a component is being removed from the DOM (Document Object Model) and is no longer rendered or accessible.
+
+// During this phase, React performs a series of cleanup operations to ensure that the component and its associated resources are properly disposed of.
+
+// The unmounting phase is the last stage in the lifecycle of a React component and occurs when the component is being removed from the DOM tree.
+
+// This can happen for various reasons, such as when the component is no longer needed, the parent component is re-rendered without including the child component, or when the application is navigating to a different page or view.
+
+// The componentWillUnmount() lifecycle method
+// During the unmounting phase, React calls the following lifecycle methods in order:
+
+// componentWillUnmount(): This method is called just before the component is removed from the DOM. It allows you to perform any necessary cleanup, such as canceling timers, removing event listeners, or clearing any data structures that were set up during the mounting phase.
+// After componentWillUnmount() is called, the component is removed from the DOM and all of its state and props are destroyed.
+// It's important to note that once a component is unmounted, it cannot be mounted again. If you need to render the component again, you will need to create a new instance of it.
+
+// Here's an example of how you might use the componentWillUnmount() method to perform cleanup:
+
+// import React, { Component } from 'react';
+// import ReactDOM from 'react-dom';
+
+// class MyComponent extends Component {
+// state = {
+// showChild: true,
+// };
+
+// handleDelete = () => {
+// this.setState({ showChild: false });
+// };
+
+// render() {
+// const { showChild } = this.state;
+
+//     return (
+//       <div>
+//         {showChild && <Child />}
+//         <button type="button" onClick={this.handleDelete}>
+//           Delete Header
+//         </button>
+//       </div>
+//     );
+
+// }
+// }
+
+// class Child extends Component {
+// componentWillUnmount() {
+// alert('The component named Child is about to be unmounted.');
+// }
+
+// render() {
+// return <h1>Hello World!</h1>;
+// }
+// }
+
+// const rootElement = document.getElementById('root');
+// ReactDOM.render(<MyComponent />, rootElement);
+// This is a React component that renders a MyComponent with a Child component that will be conditionally rendered based on the value of showChild state.
+
+// When the user clicks the "Delete Header" button, the handleDelete function will be called which will update the showChild state to false. This causes the Child component to unmount and trigger the componentWillUnmount lifecycle method, which will display an alert message.
+
+// The MyComponent class extends the Component class provided by React and defines a state variable showChild with an initial value of true. It also defines a function handleDelete that will be called when the user clicks the "Delete Header" button. This function updates the showChild state to false.
+
+// In the render method of MyComponent, the showChild state is used to conditionally render the Child component using the logical && operator. If showChild is true, the Child component will be rendered. Otherwise, it will not be rendered.
+
+// The Child class extends the Component class and defines a componentWillUnmount method that will be called just before the component is unmounted. In this case, it displays an alert message.
+
+// Finally, the ReactDOM.render method is called to render the MyComponent component inside the element with the ID "root" in the HTML document.
+// Q6) (Research) Why do we use super(props) in constructor?
+// A6) By using super(props), we ensure that the constructor props are correctly passed to the parent constructor, allowing us to access this.
+// Q7) (Research) Why can't we have the callback function of useEffect async?
+// A7) You cannot directly make the callback function supplied to the useEffect hook async because:
+
+// async functions implicitly return a promise, and;
+// useEffect expects its callback to either return nothing or a clean-up function.
+// When you attempt to make useEffect's callback async, you will see the following warning:
+
+// // Warning: Effect callbacks are synchronous to prevent race conditions
+// useEffect(async () => {
+// const products = await fetch(`${API_URL}/products.json`);
+// setProducts(products);
+// }, []);
+
+// Let's understand the reasons why an asynchronous callback function cannot be called directly from a useEffect() hook. This is because the useEffect hook expects its effect function to return either a cleanup function or nothing at all. This is due to the useEffect() hook's callback function's asynchronous execution and lack of blocking. Therefore, we must follow a specific pattern if we want to call an asynchronous function inside the useEffect() hook.
+
+// The special pattern is to create a new function that is declared inside the useEffect() hook and that contains the async function, and then we can call this new function inside the useEffect() hook. Here's an example:
+// import React, { useEffect } from 'react';
+
+// function App() {
+// useEffect(() => {
+// async function fetchData() {
+// const response = await fetch('https://example.com/data');
+// const data = await response.json();
+// console.log(data);
+// }
+
+//     fetchData();
+
+// }, []);
+
+// return <div>Hello World</div>;
+// }
+
+// import React, { useEffect } from 'react';
+
+// function App() {
+// useEffect(() => {
+// async function fetchData() {
+// const response = await fetch('https://example.com/data');
+// const data = await response.json();
+// console.log(data);
+// }
+
+//     fetchData();
+
+// }, []);
+
+// return <div>Hello World</div>;
+// }
+// In this example, a brand-new function called "fetchData()" has been developed and is declared inside the "useEffect()" hook. The asynchronous code that we want to execute is contained in this function. Then, to make sure that it only executes once when the component mounts, we call this function from within the "useEffect()" hook and pass an empty dependency array as the second argument.
+
+// By using this pattern, we can ensure that the asynchronous function runs as expected without any issues.
+// Coding Assignment:
+// ● Create a Class Based Component - Done
+// ○ Create 2 class based child components - Done
+// ○ Pass props from Parent to child - Done
+// ○ Create a constructor - Done
+// ○ Create a state variable inside child - Done
+// ○ Use this.setState to update it - Done
+// ○ What if there are multiple state variables? Done
+// ○ Write a console.log for each lifecycle method - Done
+// ○ Play with the console logs to find out the correct order of their execution - Done
+// ● Create interval inside componentDidMount? - done
+// ○ Use clearInterval to fix the issue caused by that interval
