@@ -8,8 +8,20 @@ import RestaurantCard from "./components/RestaurantCard";
 import Restaurant from "./components/Restaurant";
 import Contact from "./components/Contact";
 import Error from "./components/Error";
-import About from "./components/About";
+// import About from "./components/About";
 import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
+// import Grocery from "./components/Grocery";
+import { lazy, Suspense } from "react";
+
+// Chunking
+// Code Splitting
+// Dynamic Bundling
+// lazy loading
+// on demand loading
+// dynamix import
+const Grocery = lazy(() => import("./components/Grocery"));
+
+const About = lazy(() => import("./components/About"));
 const AppLayout = () => {
   return (
     <div className="app">
@@ -31,11 +43,23 @@ const appRouter = createBrowserRouter([
       },
       {
         path: "/About",
-        element: <About />,
+        element: (
+          <Suspense fallback={<h1> Loading ... </h1>}>
+            <About />
+          </Suspense>
+        ),
       },
       {
         path: "/Contact",
         element: <Contact />,
+      },
+      {
+        path: "/Grocery",
+        element: (
+          <Suspense fallback={<h1> Loading ... </h1>}>
+            <Grocery />
+          </Suspense>
+        ),
       },
       {
         path: "/Restaurant/:id",

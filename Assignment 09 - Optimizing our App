@@ -1,0 +1,59 @@
+Theory -
+Q1) When and why do we need lazy()?
+A1) Lazy Loading in React JS helps to optimize the performance of React applications. The data is only rendered when visited or scrolled it can be images, scripts, etc. Lazy loading helps to load the web page quickly and presents the limited content to the user that is needed for the interaction lazy loading can be more helpful in applications that have high-resolution images or data that alters the loading time of the application.
+Lazy Loading in React:
+Lazy loading is a technique in React that allows you to load components, modules, or assets asynchronously, improving the loading time of your application. React provides a built-in React.lazy() method and Suspense component to achieve lazy loading.
+
+Syntax for Lazy Loading:
+// Implement Lazy Loding with React.Lazy method
+const MyComponent = React.lazy(() => import('./MyComponent'));
+Steps to Implement Lazy Loading:
+Recognize the component you want to Lazy Load. These are mostly Large or complex which is not necessary for all the users when the page loads.
+Import the `lazy()` and Suspense components from the React package
+Use the `lazy()` function to dynamically import the component you want to lazy load:
+Note that the argument to the `lazy()` function should be a function that returns the result of the import() function.
+Wrap the lazy-loaded component in a `Suspense` component, which will display a fallback UI while the component is being loaded:
+
+Lazy loading is one of the most common design patterns used in web and mobile development. It is widely used with frameworks like Angular and React to increase an application’s performance by reducing initial loading time.
+Q2) What is suspense?
+A2) What is React Suspense?
+React suspense is a new feature released in React.js version 16.6. With this new feature, components may pause rendering while they wait for an asynchronous process to finish, like separating code or retrieving data.
+
+Suspense was created to make it easier for developers to create apps that have improved loading indications and a more cohesive user experience. It makes it possible to halt component tree rendering until specific criteria are satisfied, which makes it easier for developers to work with asynchronous data.
+Q3) Why we got this error : A component suspended while responding to
+synchronous input. This will cause the UI to be replaced with a loading indicator.
+To fix, updates that suspend should be wrapped with startTransition? How does
+suspense fix this error?
+
+A3) If we try to load a component for example Grocery Component and it is not there. So React will suspend the rendering. Grocery code was not there so React cannot load the Grocery component. So that is why React throws the error. When I click on Grocery it will take some time to fetch the data of Grocery. At that point of time that middle state, React tries to render Grocery and it is not there, that state causes the eroor. How to handle that state?
+
+We will use Suspense. Suspense is a Component and it will come from React library. We can wrap our Grocery Component into Suspense. We have to give Suspense a placeholder or fallback. What should React render when code is not available. So basically like a loading screen. You can pass Shimmer UI inside fallback or you can pass JSX too like fallback = {<h1> Loading ... </h1>}. I can tell interviewer if he asks me to make e-commerce website. I can use lazy loading to distribute my code into different chunks. This is how I can distribute my application into smaller smaller chunk.. This will make my app very performing.
+Q4) Advantages and disadvantages of using this code splitting pattern?
+
+A4) Bundling is great, but as your app grows, your bundle will grow too. Especially if you are including large third-party libraries. You need to keep an eye on the code you are including in your bundle so that you don’t accidentally make it so large that your app takes a long time to load.
+
+To avoid winding up with a large bundle, it’s good to get ahead of the problem and start “splitting” your bundle. Code-Splitting is a feature supported by bundlers like Webpack, Rollup and Browserify (via factor-bundle) which can create multiple bundles that can be dynamically loaded at runtime.
+
+Code-splitting your app can help you “lazy-load” just the things that are currently needed by the user, which can dramatically improve the performance of your app. While you haven’t reduced the overall amount of code in your app, you’ve avoided loading code that the user may never need, and reduced the amount of code needed during the initial load.
+
+Advantages : -
+
+By separating code into smaller bundles, load time is reduced, thus increasing performance. Even if you didn't change the code logic you wrote, the application certainly will seem faster.
+
+Disadvantages: -
+The only drawback about code splitting is that you can only use it in client side rendering.
+Q5) When do we and why do we need suspense?
+
+A5) 1) We need Suspense when we have to do data fetching.
+
+React Suspense's data fetching feature makes managing asynchronous data loading in your React apps easier. React Suspense allows you to postpone rendering until the data is available, enhancing user experience by offering fallback content or loading indications.
+
+2. Lazy Loading in React Suspense
+   Loading components of your application only when needed (lazy loading, also known as code splitting) can lower the size of your initial bundle and speed up the loading of your React application.
+
+You can use React.lazy() in conjunction with React Suspense to easily include lazy loading into your application.
+
+Coding -
+● Create your custom hooks - Done
+● Try out lazy and suspense - Done
+● Make your code clean. - Done
