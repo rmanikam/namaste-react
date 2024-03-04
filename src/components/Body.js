@@ -12,6 +12,7 @@ const Body = () => {
 
   const resData = useRestaurants();
 
+  console.log("abc", resData);
   const onlineStatus = useOnlineStatus();
 
   if (onlineStatus === false)
@@ -49,14 +50,15 @@ const Body = () => {
     <Shimmer />
   ) : (
     <div className="body">
-      <div className="search">
+      <div className="search m-4 p-4">
         <input
-          className="search_field"
+          className="border border-solid border-black"
           type="text"
           value={searchText}
           onChange={(e) => setSearchText(e.target.value)}
         />
         <button
+          className="px-4 py-2 bg-green-100 m-4 rounded-lg"
           onClick={() => {
             const filterRestaurant = listOfRestaurants.filter((res) =>
               res.name.toLowercase().includes(searchText.toLowercase())
@@ -67,9 +69,17 @@ const Body = () => {
         >
           Search
         </button>
-        <button onClick={filterItems}>Filter Items</button>
+        <div className="search m-4 p-4 flex items-center">
+          <button
+            className="px-4 py-2 bg-gray-100 m-4 rounded-lg"
+            onClick={filterItems}
+          >
+            Filter Items
+          </button>
+        </div>
+        5
       </div>
-      <div className="restaurant_container">
+      <div className="flex flex-wrap">
         {filteredRestaurants?.map((restaurant) => {
           return (
             <Link
