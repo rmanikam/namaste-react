@@ -1,0 +1,189 @@
+Theory:
+Q1) What is prop drilling?
+A1) Prop drilling in react is the process of passing data from one component via several interconnected components to the component that needs it. The name drilling refers to this process of forcing these components to take in unnecessary data and pass it on to the following component, which in turn sends it on to the next component, and so on until it reaches its intended destination. The reusability of components and app performance may suffer as a result in a significant way. It is not a good idea to pass data via several components when building neat, reusable, and DRY code.
+Q2) What is lifting the state up?
+A2) Lifting state up is a common pattern that react developers use to share state between multiple components. This process involves moving the state management from child components to a common ancestor (parent component). This way, the state becomes the "source of truth" for child components, and they can access and update it through props.
+
+Lifting state up in React Hooks involves a similar process as in class components, but with a simpler syntax. The useState Hook is used to add state to functional components, and the state and state update function are then passed down to child components through props.
+
+Here's a step-by-step process:
+
+Import the useState Hook from react.
+Call the useState Hook at the top of your functional component to add state.
+The useState Hook returns an array containing the current state value as well as a method for updating it. To obtain the state value and state update function, destructure this array.
+Pass the state value and state update function down to child components through props.
+In the child components, use the props to display the state value and handle changes to it.
+Here's an example:
+
+     import React, { useState } from 'react';
+
+    function Parent() {
+      const [value, setValue] = useState('');
+
+      const handleInputChange = (event) => {
+        setValue(event.target.value);
+      };
+
+      return (
+        <div>
+          <Child value={value} onInputChange={handleInputChange} />
+          <Child value={value} onInputChange={handleInputChange} />
+        </div>
+      );
+    }
+
+    function Child(props) {
+      return (
+        <input type="text" value={props.value} onChange={props.onInputChange} />
+      );
+    }
+
+
+In this example, the Parent component is using the useState Hook to add state. The state value and state update function are then passed down to the Child components through props. The Child components use these props to display the state value and handle changes to it.
+
+Q3) What is Context Provider and Context Consumer?
+A3) On Context Provider, we put the value that we want to pass down our entire component tree. We set that equal to the value prop to do so.
+Whatever we want to consume (or use) what was provided on our context, we use the consumer component: Context Consumer.
+
+import React from 'react';
+
+export const UserContext = React.createContext();
+
+export default function App() {
+return (
+<UserContext.Provider value="Reed">
+<User />
+</UserContext.Provider>
+)
+}
+
+function User() {
+return (
+<UserContext.Consumer>
+{value => <h1>{value}</h1>}
+{/_ prints: Reed _/}
+</UserContext.Consumer>
+)
+}
+Q4) If you don’t pass a value to the provider does it take the default value?
+A4) defaultValue: The value that you want the context to have when there is no matching context provider in the tree above the component that reads context. If you don’t have any meaningful default value, specify null. The default value is meant as a “last resort” fallback. It is static and never changes over time. By default, the values they receive will be the default values you have specified when creating the contexts. However, by itself this isn’t useful because the default values never change.
+
+Context is useful because you can provide other, dynamic values from your components.
+Coding:
+● Practice React Context with code examples
+
+How to Get Started with the Context API
+To start using the Context API in your applications, you'll need to follow a few simple steps:
+
+1. Create a Context Object
+   First, you need to create a context object using the createContext function from the 'react' library. This context object will hold the data that you want to share across your application.
+
+Create a new file named MyContext.js in the src folder and add the following code to create a context object:
+
+import { createContext } from 'react';
+
+export const MyContext = createContext("");
+In the above code, we're importing createContext from React and using it to create a new context object named "MyContext". Then, we are exporting the context object so that we can use it in other parts of our application.
+
+2. Wrap Components with a Provider
+   Once you've created a context object, you need to wrap the components that need access to the shared data with a Provider component. The Provider component accepts a "value" prop that holds the shared data, and any component that is a child of the Provider component can access that shared data.
+
+It's important to note that the Provider component should be wrapped around the top-level component in an application to ensure that all child components have access to the shared data.
+
+Here's an example that demonstrates how to wrap components with a Provider in Context API:
+
+// Create a parent component that wraps child components with a Provider
+
+import { useState, React } from "react";
+import { MyContext } from "./MyContext";
+import MyComponent from "./MyComponent";
+
+function App() {
+const [text, setText] = useState("");
+
+return (
+<div>
+<MyContext.Provider value={{ text, setText }}>
+<MyComponent />
+</MyContext.Provider>
+</div>
+);
+}
+
+export default App;
+In this example, we have a parent component called App. This component has a state variable called "text", which is initially set to an empty string. We've also defined a function called setText that can be used to update the value of text.
+
+Inside the return statement of the App component, we've wrapped the children of this component with the provider component ("MyContext.Provider"). Then we've passed an object to the value prop of the provider component that contains "text" and "setText" values.
+
+3. Consume the Context
+   Now that we've created the provider component, we need to consume the context in other components. To do this, we use the "useContext" hook from React.
+
+import { useContext } from 'react';
+import { MyContext } from './MyContext';
+
+function MyComponent() {
+const { text, setText } = useContext(MyContext);
+
+return (
+<div>
+<h1>{text}</h1>
+<button onClick={() => setText('Hello, world!')}>
+Click me
+</button>
+</div>
+);
+}
+
+export default MyComponent;
+In this example, we've used the useContext hook to access the "text" and "setText" variables that were defined in the provider component.
+
+Inside the return statement of "MyComponent", we've rendered a paragraph element that displays the value of text. We've also rendered a button that, when clicked, will call the setText function to update the value of text to "Hello, world!".
+
+a191j3C
+And that's it! This is how you can use the Context API in your React application.
+
+By creating a context object, defining a provider component, and consuming the context in other components, you can share data across your application in a simple and efficient way.
+
+Use Cases of Context API
+Here are some real-world use cases of Context API.
+
+Theming: You can use Context API to store the current theme of your application and make it available to all components. This way, whenever the user switches the theme (such as enabling dark mode), all components will be updated with the new theme.
+User Authentication: You can also use Context API to store a user's authentication status and pass it down to all the components that need it. This way, you can easily restrict access to certain parts of your application based on the user's authentication status.
+Multilingual Support: You can store the current language of your application in the context and pass it down to all the components that need it. This way, you can easily switch between different languages without having to pass the language down as props to all the components.
+Accessing data from external sources: Finally, you can use the Context API to store data retrieved from external sources such as APIs or databases and make it available to all components. This can simplify your code and make it easier to manage data across your application.
+Q) Try out Nested Contexts
+
+A) Quick snippet and a question — what gets rendered out to the DOM here?
+
+import React, { createContext, useContext } from 'react';
+
+export const AnalyticsContext = createContext({
+category: 'Page'
+});
+
+const ButtonInCtx = () => {
+const { category } = useContext(AnalyticsContext);
+return <button type='button'>Context: {category}</button>;
+};
+
+export default function App() {
+return (
+<AnalyticsContext.Provider value={{ category: 'Page' }}>
+<AnalyticsContext.Provider value={{ category: 'Header' }}>
+<ButtonInCtx />
+</AnalyticsContext.Provider>
+<AnalyticsContext.Provider value={{ category: 'Body' }}>
+<ButtonInCtx />
+</AnalyticsContext.Provider>
+<ButtonInCtx />
+<AnalyticsContext.Provider value={{ category: 'Footer' }}>
+<ButtonInCtx />
+</AnalyticsContext.Provider>
+</AnalyticsContext.Provider>
+);
+};
+If you’ve read the rest of the article it’ll probably be a pretty simple guess.
+
+Nested context.
+
+When you nest a context provider inside a context provider of itself, you can override the previous context.

@@ -1,17 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import ReactDOM from "react-dom/client";
 import Header from "./components/Header";
 import LoginForm from "./components/LoginForm";
 import Body from "./components/Body";
 import Footer from "./components/Footer";
 import RestaurantCard from "./components/RestaurantCard";
-import Restaurant from "./components/Restaurant";
+import RestaurantMenu from "./components/RestaurantMenu";
 import Contact from "./components/Contact";
 import Error from "./components/Error";
 // import About from "./components/About";
 import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
 // import Grocery from "./components/Grocery";
 import { lazy, Suspense } from "react";
+
+import UserContext from "./utils/UserContext";
 
 // Chunking
 // Code Splitting
@@ -23,12 +25,24 @@ const Grocery = lazy(() => import("./components/Grocery"));
 
 const About = lazy(() => import("./components/About"));
 const AppLayout = () => {
+  const [userName, setUserName] = useState();
+  // authentication
+
+  useEffect(() => {
+    const data = {
+      name: "Akshay Saini",
+    };
+    setUserName(data.name);
+  }, []);
+
   return (
-    <div className="app">
-      <Header />
-      <Outlet />
-      <LoginForm />
-    </div>
+    <UserContext.Provider value={{ loggedInUser: userName, setUserName }}>
+      <div className="app">
+        <Header />
+        <Outlet />
+        <LoginForm />
+      </div>
+    </UserContext.Provider>
   );
 };
 
@@ -62,8 +76,8 @@ const appRouter = createBrowserRouter([
         ),
       },
       {
-        path: "/Restaurant/:id",
-        element: <Restaurant />,
+        path: "/RestaurantMenu/:id",
+        element: <RestaurantMenu />,
       },
     ],
     errorElement: <Error />,

@@ -1,138 +1,138 @@
-Theory:
-Q1) Explore all the ways of writing css
-A1) First way to write css is the way we are writing css previously i.e to import css in js file.
-2nd way to add css is using sass and scss. sass is like writing css with some super powers. it adds some superpowers to css and writing css becomes little more advanced and little more easy. but this is not the recommended way to write css. when your application goes big then these writing styles do not scale well. these are not used in industry ready production applications. companies do not use sass or scss like this.
+// Theory:
+// Q1) Explore all the ways of writing css
+// A1) First way to write css is the way we are writing css previously i.e to import css in js file.
+// 2nd way to add css is using sass and scss. sass is like writing css with some super powers. it adds some superpowers to css and writing css becomes little more advanced and little more easy. but this is not the recommended way to write css. when your application goes big then these writing styles do not scale well. these are not used in industry ready production applications. companies do not use sass or scss like this.
 
-     3rd way - Styled components is another way to write css with react
-     4th way - to add css to file is using different types of libraries or css frameworks example material UI, Bottstrap, Chakra UI, Ant Design
+//      3rd way - Styled components is another way to write css with react
+//      4th way - to add css to file is using different types of libraries or css frameworks example material UI, Bottstrap, Chakra UI, Ant Design
 
-Q2) How do we configure tailwind?
-A2) Generate a Tailwind config file for your project using the Tailwind CLI utility included when you install the tailwindcss npm package:
+// Q2) How do we configure tailwind?
+// A2) Generate a Tailwind config file for your project using the Tailwind CLI utility included when you install the tailwindcss npm package:
 
-npx tailwindcss init
-This will create a minimal tailwind.config.js file at the root of your project.
+// npx tailwindcss init
+// This will create a minimal tailwind.config.js file at the root of your project.
 
-Q3) In tailwind.config.js, what does all the keys mean (content, theme, extend,
-plugins)?
+// Q3) In tailwind.config.js, what does all the keys mean (content, theme, extend,
+// plugins)?
 
-A3) content - Configuring the content sources for your project.
-The content section of your tailwind.config.js file is where you configure the paths to all of your HTML templates, JavaScript components, and any other source files that contain Tailwind class names. /** @type {import('tailwindcss').Config} \*/
-module.exports = {
-content: [
-'./pages/**/_.{html,js}',
-'./components/\*\*/_.{html,js}',
-],
-// ...
-}
-theme - Customizing the default theme for your project.
+// A3) content - Configuring the content sources for your project.
+// The content section of your tailwind.config.js file is where you configure the paths to all of your HTML templates, JavaScript components, and any other source files that contain Tailwind class names. /** @type {import('tailwindcss').Config} \*/
+// module.exports = {
+// content: [
+// './pages/**/_.{html,js}',
+// './components/\*\*/_.{html,js}',
+// ],
+// // ...
+// }
+// theme - Customizing the default theme for your project.
 
-The theme section of your tailwind.config.js file is where you define your project’s color palette, type scale, fonts, breakpoints, border radius values, and more. /\*_ @type {import('tailwindcss').Config} _/
-module.exports = {
-theme: {
-screens: {
-sm: '480px',
-md: '768px',
-lg: '976px',
-xl: '1440px',
-},
-colors: {
-'blue': '#1fb6ff',
-'purple': '#7e5bef',
-'pink': '#ff49db',
-'orange': '#ff7849',
-'green': '#13ce66',
-'yellow': '#ffc82c',
-'gray-dark': '#273444',
-'gray': '#8492a6',
-'gray-light': '#d3dce6',
-},
-fontFamily: {
-sans: ['Graphik', 'sans-serif'],
-serif: ['Merriweather', 'serif'],
-},
-extend: {
-spacing: {
-'128': '32rem',
-'144': '36rem',
-},
-borderRadius: {
-'4xl': '2rem',
-}
-}
-}
-}
-extend - Customizing the default breakpoints for your project.
+// The theme section of your tailwind.config.js file is where you define your project’s color palette, type scale, fonts, breakpoints, border radius values, and more. /\*_ @type {import('tailwindcss').Config} _/
+// module.exports = {
+// theme: {
+// screens: {
+// sm: '480px',
+// md: '768px',
+// lg: '976px',
+// xl: '1440px',
+// },
+// colors: {
+// 'blue': '#1fb6ff',
+// 'purple': '#7e5bef',
+// 'pink': '#ff49db',
+// 'orange': '#ff7849',
+// 'green': '#13ce66',
+// 'yellow': '#ffc82c',
+// 'gray-dark': '#273444',
+// 'gray': '#8492a6',
+// 'gray-light': '#d3dce6',
+// },
+// fontFamily: {
+// sans: ['Graphik', 'sans-serif'],
+// serif: ['Merriweather', 'serif'],
+// },
+// extend: {
+// spacing: {
+// '128': '32rem',
+// '144': '36rem',
+// },
+// borderRadius: {
+// '4xl': '2rem',
+// }
+// }
+// }
+// }
+// extend - Customizing the default breakpoints for your project.
 
-​
-Configuring custom screens
-You define your project’s breakpoints in the theme.screens section of your tailwind.config.js file. The keys become your responsive modifiers (like md:text-center), and the values are the min-width where that breakpoint should start.
+// ​
+// Configuring custom screens
+// You define your project’s breakpoints in the theme.screens section of your tailwind.config.js file. The keys become your responsive modifiers (like md:text-center), and the values are the min-width where that breakpoint should start.
 
-The default breakpoints are inspired by common device resolutions:
+// The default breakpoints are inspired by common device resolutions:
 
-tailwind.config.js
-/\*_ @type {import('tailwindcss').Config} _/
-module.exports = {
-theme: {
-screens: {
-'sm': '640px',
-// => @media (min-width: 640px) { ... }
+// tailwind.config.js
+// /\*_ @type {import('tailwindcss').Config} _/
+// module.exports = {
+// theme: {
+// screens: {
+// 'sm': '640px',
+// // => @media (min-width: 640px) { ... }
 
-      'md': '768px',
-      // => @media (min-width: 768px) { ... }
+//       'md': '768px',
+//       // => @media (min-width: 768px) { ... }
 
-      'lg': '1024px',
-      // => @media (min-width: 1024px) { ... }
+//       'lg': '1024px',
+//       // => @media (min-width: 1024px) { ... }
 
-      'xl': '1280px',
-      // => @media (min-width: 1280px) { ... }
+//       'xl': '1280px',
+//       // => @media (min-width: 1280px) { ... }
 
-      '2xl': '1536px',
-      // => @media (min-width: 1536px) { ... }
-    }
+//       '2xl': '1536px',
+//       // => @media (min-width: 1536px) { ... }
+//     }
 
-}
-}
+// }
+// }
 
-extend - As described in the theme documentation, if you’d like to extend the default spacing scale, you can do so using the theme.extend.spacing section of your tailwind.config.js file:
+// extend - As described in the theme documentation, if you’d like to extend the default spacing scale, you can do so using the theme.extend.spacing section of your tailwind.config.js file:
 
-tailwind.config.js
-/\*_ @type {import('tailwindcss').Config} _/
-module.exports = {
-theme: {
-extend: {
-spacing: {
-'13': '3.25rem',
-'15': '3.75rem',
-'128': '32rem',
-'144': '36rem',
-}
-}
-}
-}
-This will generate classes like p-13, m-15, and h-128 in addition to all of Tailwind’s default spacing/sizing utilities.
-plugins - Extending Tailwind with reusable third-party plugins.
+// tailwind.config.js
+// /\*_ @type {import('tailwindcss').Config} _/
+// module.exports = {
+// theme: {
+// extend: {
+// spacing: {
+// '13': '3.25rem',
+// '15': '3.75rem',
+// '128': '32rem',
+// '144': '36rem',
+// }
+// }
+// }
+// }
+// This will generate classes like p-13, m-15, and h-128 in addition to all of Tailwind’s default spacing/sizing utilities.
+// plugins - Extending Tailwind with reusable third-party plugins.
 
-    Plugins let you register new styles for Tailwind to inject into the user’s stylesheet using JavaScript instead of CSS.
+//     Plugins let you register new styles for Tailwind to inject into the user’s stylesheet using JavaScript instead of CSS.
 
-    To get started with your first plugin, import Tailwind’s plugin function from tailwindcss/plugin. Then inside your plugins array, call the imported plugin function with an anonymous function as the first argument.
-    const plugin = require('tailwindcss/plugin')
+//     To get started with your first plugin, import Tailwind’s plugin function from tailwindcss/plugin. Then inside your plugins array, call the imported plugin function with an anonymous function as the first argument.
+//     const plugin = require('tailwindcss/plugin')
 
-module.exports = {
-plugins: [
-plugin(function({ addUtilities, addComponents, e, config }) {
-// Add your custom styles here
-}),
-]
-}
-Plugin functions receive a single object argument that can be destructured into several helper functions
-Q4) Why do we have .postcssrc file?
+// module.exports = {
+// plugins: [
+// plugin(function({ addUtilities, addComponents, e, config }) {
+// // Add your custom styles here
+// }),
+// ]
+// }
+// Plugin functions receive a single object argument that can be destructured into several helper functions
+// Q4) Why do we have .postcssrc file?
 
-A4) PostCSS is a JavaScript tool that transforms your CSS code into an abstract syntax tree (AST) and then provides an API (application programming interface) for analyzing and modifying it using JavaScript plugins.
-PostCSS provides a large ecosystem of plugins to perform different functionalities like linting, minifying, inserting vendor prefixes, and many other things.
-Despite its name, it is neither a post-processor nor a pre-processor, it is just a transpiler that turns a special PostCSS plugin syntax into a Vanilla CSS. You can think of it as the Babel tool for CSS.
-You can use PostCSS in conjunction with existing preprocessors like Sass, Less, and Stylus. Or you can use it as an alternative to all of them since it has all the required functionalities to be used alone.
-PostCSS is also used by other technologies like Vite and Next.js, as well as the CSS framework TailwindCSS which is a PostCSS plugin. PostCSS is rather a CSS parser, framework or API that allows us to use plugins which can do various tasks.
+// A4) PostCSS is a JavaScript tool that transforms your CSS code into an abstract syntax tree (AST) and then provides an API (application programming interface) for analyzing and modifying it using JavaScript plugins.
+// PostCSS provides a large ecosystem of plugins to perform different functionalities like linting, minifying, inserting vendor prefixes, and many other things.
+// Despite its name, it is neither a post-processor nor a pre-processor, it is just a transpiler that turns a special PostCSS plugin syntax into a Vanilla CSS. You can think of it as the Babel tool for CSS.
+// You can use PostCSS in conjunction with existing preprocessors like Sass, Less, and Stylus. Or you can use it as an alternative to all of them since it has all the required functionalities to be used alone.
+// PostCSS is also used by other technologies like Vite and Next.js, as well as the CSS framework TailwindCSS which is a PostCSS plugin. PostCSS is rather a CSS parser, framework or API that allows us to use plugins which can do various tasks.
 
-PostCSS is a tool that makes work with CSS easier, more flexible and faster.
-Coding:
-Configure Tailwind and try to build your whole app using tailwind - Done
+// PostCSS is a tool that makes work with CSS easier, more flexible and faster.
+// Coding:
+// Configure Tailwind and try to build your whole app using tailwind - Done

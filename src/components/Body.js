@@ -1,9 +1,11 @@
-import RestaurantCard from "./RestaurantCard";
-import { useState, useEffect } from "react";
+import RestaurantCard, { withPromotedLabel } from "./RestaurantCard";
+import { useState, useEffect, useContext } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
 import useRestaurants from "../utils/useRestaurants";
+
+import UserContext from "../utils/UserContext";
 const Body = () => {
   const [listOfRestaurants, setListOfRestaurants] = useState([]);
   const [filteredRestaurants, setFilteredRestaurants] = useState([]);
@@ -15,6 +17,8 @@ const Body = () => {
   console.log("abc", resData);
   const onlineStatus = useOnlineStatus();
 
+  const RestaurantCardPromoted = withPromotedLabel(RestaurantCard);
+
   if (onlineStatus === false)
     return (
       <h1>
@@ -22,6 +26,7 @@ const Body = () => {
       </h1>
     );
 
+  const { loggedInUser, setUserName } = useContext(UserContext);
   console.log(
     "jsonDta",
     resData?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
@@ -61,7 +66,7 @@ const Body = () => {
           className="px-4 py-2 bg-green-100 m-4 rounded-lg"
           onClick={() => {
             const filterRestaurant = listOfRestaurants.filter((res) =>
-              res.name.toLowercase().includes(searchText.toLowercase())
+              res.name.toLowercase().includes(searchText.toLowerCase())
             );
 
             setFilteredRestaurants(filterRestaurant);
@@ -77,7 +82,14 @@ const Body = () => {
             Filter Items
           </button>
         </div>
-        5
+        <div className="search m-4 p-4 flex items-center">
+          <label>UserName :</label>
+          <input
+            className="border border-black p-2"
+            value={loggedInUser}
+            onChange={(e) => setUserName(e.target.value)}
+          />
+        </div>
       </div>
       <div className="flex flex-wrap">
         {filteredRestaurants?.map((restaurant) => {
@@ -86,7 +98,11 @@ const Body = () => {
               key={restaurant.info?.id}
               to={"/Restaurant/" + restaurant.info?.id}
             >
-              <RestaurantCard {...restaurant.info} />
+              {restaurant.data.promoted ? (
+                <RestaurantCardPromoted resData={restaurant} />
+              ) : (
+                <RestaurantCard resData={restaurant} />
+              )}
             </Link>
           );
         })}

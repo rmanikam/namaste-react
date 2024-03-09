@@ -1,11 +1,16 @@
 import { LOGO_URL } from "../utils/constants";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
+import UserContext from "../utils/UserContext";
 const Header = () => {
   const [loginBtn, setLoginBtn] = useState("Login");
   const onlineStatus = useOnlineStatus();
   // console.log("Header Render");
+
+  const { loggedInUser } = useContext(UserContext);
+
+  console.log(data);
 
   function ExampleComponent() {
     console.log(useState()); // Logging the initial state and update function
@@ -44,6 +49,8 @@ const Header = () => {
         >
           {loginBtn}
         </button>
+
+        <li className="px-4 font-bold">{loggedInUser}</li>
       </div>
     </div>
   );

@@ -10,9 +10,9 @@ class UserClass extends React.Component {
         location: "Dummy Location",
       },
     };
-    console.log(props);
+    // console.log(props);
 
-    console.log(this.props.name + "Child Constructor");
+    // console.log(this.props.name + "Child Constructor");
   }
 
   async componentDidMount() {
@@ -27,10 +27,10 @@ class UserClass extends React.Component {
     });
 
     this.timer = setinterval(() => {
-      console.log("Namaste React Operation");
+      // console.log("Namaste React Operation");
     }, 1000);
 
-    console.log(this.props.name + "Child Component Did Mount");
+    // console.log(this.props.name + "Child Component Did Mount");
   }
   componentDidUpdate(prevProps, prevState) {
     if (this.state.count !== prevState.count) {
@@ -38,11 +38,11 @@ class UserClass extends React.Component {
 
     if (this.state.count2 !== prevState.count) {
     }
-    console.log("Component Did Update");
+    // console.log("Component Did Update");
   }
 
   componentWillUnmount() {
-    console.log("Component Will Unmount");
+    // console.log("Component Will Unmount");
 
     clearInterval(this.timer);
   }
@@ -51,7 +51,7 @@ class UserClass extends React.Component {
     // const { name, location, contact } = this.props;
     const { name, location } = this.state.userInfo;
     // const { count } = this.state;
-    console.log(this.props.name + "Child Render");
+    // console.log(this.props.name + "Child Render");
     return (
       <div className="user-card">
         {/* <h2>Count: {count}</h2> */}

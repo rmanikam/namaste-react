@@ -1,7 +1,7 @@
 import React from "react";
 import User from "./User";
 import UserClass from "./UserClass";
-
+import UserContext from "../utils/UserContext";
 class About extends React.Component {
   constructor(props) {
     super(props);
@@ -19,6 +19,15 @@ class About extends React.Component {
       <>
         <h1>About</h1>
         <h2>This is Namaste React Series</h2>
+
+        <div>
+          LoggedIn User
+          <UserContext.Consumer>
+            {({ loggedInUser }) => (
+              <h1 className="text-xl font-bold">{loggedInUser}</h1>
+            )}
+          </UserContext.Consumer>
+        </div>
         <User name={"Raman Sahi"} />
         {/* Now we are using 2 instances of the same class */}
         <UserClass
