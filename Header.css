@@ -1,21 +1,23 @@
-#outerContainer
-{
-    display:flex;
-    align-items: center;
-    justify-content: space-evenly;
+#outerContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
 }
-img{
-    width: 30px;
-    height: 50px;
-    margin-left: -15px;
-    margin-right: 501px;
+img {
+  width: 30px;
+  height: 50px;
+  margin-left: -15px;
+  margin-right: 501px;
 }
-input{
-    margin-left: -20px;
-    margin-right: 100px;
-    width: 276px;
+input {
+  margin-left: -20px;
+  margin-right: 100px;
+  width: 276px;
 }
-svg.svg-inline--fa.fa-user
-{
-    margin-left:500px;
+svg.svg-inline--fa.fa-user {
+  margin-left: 500px;
+}
+
+li.px-4.font-bold {
+  list-style-type: none;
 }

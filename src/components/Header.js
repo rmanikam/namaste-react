@@ -3,6 +3,9 @@ import { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
 import UserContext from "../utils/UserContext";
+
+import { useSelector } from "react-redux";
+
 const Header = () => {
   const [loginBtn, setLoginBtn] = useState("Login");
   const onlineStatus = useOnlineStatus();
@@ -10,8 +13,11 @@ const Header = () => {
 
   const { loggedInUser } = useContext(UserContext);
 
-  console.log(data);
+  // Subscribing to the store using a selector
 
+  const cartItems = useSelector((store) => store.cart.items);
+
+  console.log(cartItems);
   function ExampleComponent() {
     console.log(useState()); // Logging the initial state and update function
 
@@ -38,8 +44,8 @@ const Header = () => {
           <li className="px-4">
             <Link to="/contact">Contact Us</Link>
           </li>
-          <li className="px-4">
-            <Link to="/cart">Cart</Link>
+          <li className="px-4 font-bold text-xl">
+            <Link to="/cart">Cart - ({cartItems.length} items)</Link>
           </li>
         </ul>
         <button
@@ -50,7 +56,7 @@ const Header = () => {
           {loginBtn}
         </button>
 
-        <li className="px-4 font-bold">{loggedInUser}</li>
+        <li className="px-4 font-bold ">{loggedInUser}</li>
       </div>
     </div>
   );

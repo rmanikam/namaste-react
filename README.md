@@ -30,5 +30,12 @@ https://github.com/rmanikam/namaste-react/blob/main/Assignment%2002%20-%20Igniti
 - - Links
 - - Address
 - - Contact
--
+
+- Redux toolkit
+- Install @reduxjs/toolkit and react-redux
+- Build our store
+- Connect our store to our app
+- Slice (cartSlice)
+- dispatch(action)
+- Selector
 - \*/

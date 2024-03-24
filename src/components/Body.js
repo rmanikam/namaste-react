@@ -27,16 +27,13 @@ const Body = () => {
     );
 
   const { loggedInUser, setUserName } = useContext(UserContext);
-  console.log(
-    "jsonDta",
-    resData?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
-  );
-  setListOfRestaurants(
-    resData?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
-  );
-  setFilteredRestaurants(
-    resData?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
-  );
+
+  // setListOfRestaurants(
+  //   resData?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+  // );
+  // setFilteredRestaurants(
+  //   resData?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+  // );
 
   const filterItems = () => {
     const filteredItems = listOfRestaurants.filter((item) => {
