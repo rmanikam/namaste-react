@@ -28,12 +28,12 @@ const Body = () => {
 
   const { loggedInUser, setUserName } = useContext(UserContext);
 
-  // setListOfRestaurants(
-  //   resData?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
-  // );
-  // setFilteredRestaurants(
-  //   resData?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
-  // );
+  setListOfRestaurants(
+    resData?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+  );
+  setFilteredRestaurants(
+    resData?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+  );
 
   const filterItems = () => {
     const filteredItems = listOfRestaurants.filter((item) => {
@@ -56,7 +56,9 @@ const Body = () => {
         <input
           className="border border-solid border-black"
           type="text"
+          data-testid="searchInput"
           value={searchText}
+          // e is given to us by browser, this e.target.value is given to us by browser
           onChange={(e) => setSearchText(e.target.value)}
         />
         <button
@@ -96,9 +98,9 @@ const Body = () => {
               to={"/Restaurant/" + restaurant.info?.id}
             >
               {restaurant.data.promoted ? (
-                <RestaurantCardPromoted resData={restaurant} />
+                <RestaurantCardPromoted resData={restaurant?.info} />
               ) : (
-                <RestaurantCard resData={restaurant} />
+                <RestaurantCard resData={restaurant?.info} />
               )}
             </Link>
           );

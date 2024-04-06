@@ -39,3 +39,25 @@ https://github.com/rmanikam/namaste-react/blob/main/Assignment%2002%20-%20Igniti
 - dispatch(action)
 - Selector
 - \*/
+
+# Types of testing (developer)
+
+- Unit Testing
+- Integration Testing
+- End to End Testing - e2e testing
+
+# Setting up Testing in our app
+
+- Install React Testing Library
+- Installed jest
+- Installed Babel dependancies
+- Configure Babel
+- Configure Parcel Config file to  
+  disable default babel transpilation
+- Jest - npx jest --init
+- Install jsdom library
+- Install @babel/preset-react - to  
+  make JSX work in test cases
+- Include @babel/preset-react inside
+  my babel config
+- Install npm i -D @testing-library/jest-dom

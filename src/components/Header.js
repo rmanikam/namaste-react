@@ -17,15 +17,15 @@ const Header = () => {
 
   const cartItems = useSelector((store) => store.cart.items);
 
-  console.log(cartItems);
-  function ExampleComponent() {
-    console.log(useState()); // Logging the initial state and update function
+  // console.log(cartItems);
+  // function ExampleComponent() {
+  //   // console.log(useState()); // Logging the initial state and update function
 
-    const [count, setCount] = useState(0);
+  //   const [count, setCount] = useState(0);
 
-    // Rest of the component code...
-  }
-  ExampleComponent();
+  //   // Rest of the component code...
+  // }
+  // ExampleComponent();
 
   return (
     <div className="flex justify-between bg-pink-100 shadow-lg sm:bg-yellow-50 lg:bg-green-50 ">
